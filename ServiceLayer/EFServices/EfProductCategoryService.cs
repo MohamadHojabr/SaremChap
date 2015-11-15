@@ -24,7 +24,8 @@ namespace ServiceLayer.EFServices
 
         public IList<ProductCategory> GetAllProductCategorys()
         {
-            throw new NotImplementedException();
+            var list = _productCategory.ToList();
+            return list;
         }
 
         public ProductCategory Get(int id)

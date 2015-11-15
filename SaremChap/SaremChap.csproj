@@ -578,6 +578,11 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\_FrontLayout.cshtml" />
     <Content Include="Views\Home\Partials\slideShow.cshtml" />
+    <Content Include="Views\Home\Partials\Quicklook.cshtml" />
+    <Content Include="Views\Home\Partials\topContent.cshtml" />
+    <Content Include="Views\Home\Partials\briefInfo.cshtml" />
+    <Content Include="Views\Home\Partials\typesOfServices.cshtml" />
+    <Content Include="Views\Home\Partials\testimonials.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

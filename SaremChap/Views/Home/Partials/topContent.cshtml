@@ -1,0 +1,58 @@
+﻿@model DomainClasses.Models.Subject
+
+<div class="section purchase">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7" style="background-color:rgba(0, 0, 0, 0.5); padding:20px; border-radius:5px;" data-animation-delay="04" data-animation="slideInLeft">
+                <div class="row">
+                    <div class="col-md-8">
+                        <img src=@Model.SubjectImage />
+                    </div>
+                    <div class="col-md-4" style="color:white">
+                        <p style="color:#fff; text-align:justify;direction:rtl;font-size:18px">
+
+                            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.SubjectContent))
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-5">
+
+                @*<h1 class="fittext wite-text tlt text-right">
+                        <span class="texts">
+                            <span>با کیفیت</span>
+                            <span>زیبا</span>
+                            <span>جدید</span>
+                            <span>همراه با تخفیف</span>
+
+                        </span>
+
+                    </h1>*@
+
+                <div class="takhfif">
+                    <h1>
+                        <i class="fa fa-coffee fa-2x"></i>
+                        @Model.SubjectLead
+                    </h1>
+
+                    <br>
+                    <h1> @Model.Authors </h1>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Start Video Section Content -->
+        <div class="section-video-content text-center">
+
+            <!-- Start Animations Text -->
+            <!-- End Animations Text -->
+            <!-- Start Buttons -->
+            <!--<a href="#" class="btn-system btn-large"><i class="fa fa-tasks"></i> Check Out Features</a>
+            <a href="#" class="btn-system btn-large btn-wite"><i class="fa fa-download"></i> Purchase This Now</a>-->
+        </div>
+        <!-- End Section Content -->
+    </div><!-- .container -->
+</div>
+

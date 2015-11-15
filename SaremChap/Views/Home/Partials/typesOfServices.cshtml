@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DomainClasses.Models.ProductCategory>
+<!-- Start Portfolio Section -->
+<div class="section full-width-portfolio" style="border-top:0; border-bottom:0; background:#fff;">
+    <!-- Start Big Heading -->
+    <div class="big-title text-center bg10" data-animation="fadeInDown" data-animation-delay="01">
+        <h1> <strong>انواع خدمات چاپ صارم</strong></h1>
+    </div>
+    <!-- End Big Heading -->
+    <!--<p class="text-center">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+        <br/>veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>-->
+    <!-- Start Recent Projects Carousel -->
+    <ul id="portfolio-list" data-animated="fadeIn">
+        @foreach (var item in Model)
+        {
+
+
+            <li style="border:thin solid #d8d8d8" data-animation="flipInY" data-animation-delay="01">
+                <span class="header">@item.Name</span>
+
+                <img src="@item.Imege" alt="@item.Name" />
+                <div class="portfolio-item-content">
+                    <span class="header">@item.Name</span>
+
+                </div>
+                <a href="/view/Product/Category/@item.ProductCategoryId"><i class="more">+</i></a>
+            </li>
+        }
+
+    </ul>
+    <!-- End Recent Projects Carousel -->
+
+</div>
+<!-- End Portfolio Section -->

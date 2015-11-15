@@ -1,0 +1,50 @@
+﻿@model IEnumerable<DomainClasses.Models.Subject>
+<!-- Start Testimonials Section -->
+<div style="padding-top:20px; padding-bottom:60px;background:#f5f5f5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 " style="border: thin solid #d1d1d1; border-radius: 5px; padding: 20px" data-animation="slideInLeft" data-animation-delay="04">
+                <div class="center-block">
+                    <p class="text-center"><i class="fa fa-credit-card" style="padding:5px; font-size:100px"></i></p>
+                    <h2 class="text-center">راهنمای خرید از چاپ صارم</h2>
+                </div>
+                <!-- Start Recent Posts Carousel -->
+                <div class="latest-posts">
+
+
+                    <ul class="w-list">
+                        <li><a href="/Home/Accountnumber">شماره حساب<i class="fa fa-gavel" style="padding:5px"></i></a></li>
+
+                        <li><a href="/Home/Privacy">حفظ حریم شخصی<i class="fa fa-gavel" style="padding:5px"></i></a></li>
+                        <li><a href="/Home/Rules">قوانین ارجاع و تعویض<i class="fa fa-gavel" style="padding:5px"></i></a></li>
+                        <li><a>راهنمای ثبت سفارش<i class="fa fa-gavel" style="padding:5px"></i></a></li>
+                    </ul>
+                </div>
+                <!-- End Recent Posts Carousel -->
+
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-5" style="border: thin solid #d1d1d1; border-radius: 5px; padding: 20px" data-animation="slideInRight" data-animation-delay="04">
+                <div class="center-block">
+                    <p class="text-center"><i class="fa fa-gift" style="padding:5px; font-size:100px"></i></p>
+                    <h2 class="text-center">نمونه محصولات چاپ شده چاپ صارم</h2>
+                </div>
+                <!-- Classic Heading -->
+                <!-- Start Testimonials Carousel -->
+                <ul class="w-list">
+                    @foreach (var item in Model)
+                    {
+                        <li>
+
+                            <a href="/view/Subject/post/@item.SubjectId">@item.SubjectLead<i class="fa fa-plus" style="padding:5px"></i></a>
+
+                        </li>
+                    }
+                </ul>
+                <!-- End Testimonials Carousel -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
