@@ -23,7 +23,8 @@ namespace ServiceLayer.EFServices
 
         public IList<Subject> GetAllSubjects()
         {
-            throw new NotImplementedException();
+            var list = _subject.Include(s => s.Chapter).OrderBy(s => s.SubjectDate).ToList();
+            return list;
         }
 
         public Subject Get(int id)
