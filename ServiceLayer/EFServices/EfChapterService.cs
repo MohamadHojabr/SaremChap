@@ -24,7 +24,8 @@ namespace ServiceLayer.EFServices
 
         public IList<Chapter> GetAllChapters()
         {
-            throw new NotImplementedException();
+            var list = _chapter.ToList();
+            return list;
         }
 
         public Chapter Get(int id)

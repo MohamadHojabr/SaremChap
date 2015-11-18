@@ -163,24 +163,12 @@
                         </li>
                         <li>
                             <a href="/home/selectgallery/1">گالری</a>
-                            <!--<ul class="dropdown">
-                                <li>
-                                    <a href="portfolio-2.html">2 Columns</a>
-                                </li>
-                                <li>
-                                    <a href="portfolio-3.html">3 Columns</a>
-                                </li>
-                                <li>
-                                    <a href="portfolio-4.html">4 Columns</a>
-                                </li>
-                                <li>
-                                    <a href="single-project.html">Single Project</a>
-                                </li>
-                            </ul>-->
+                            @{Html.RenderAction("GalleryInMenu", "Home", null);}
                         </li>
                         <li>
                             <a href="#">مطالب</a>
-                            @*@{Html.RenderAction("ChapterInMenu", "Partials", new { Area = "PartialsView" });}*@
+                            @{Html.RenderAction("ChapterInMenu", "Home", null);}
+
 
                         </li>
                         <li>
@@ -191,7 +179,7 @@
 
                                     <div class="row" style="width:880px">
 
-                                        @*@{Html.RenderAction("ProductInMenu", "Partials", new { Area = "PartialsView" });}*@
+                                        @{Html.RenderAction("ProductCategoryInMenu", "Home", null);}
 
                                     </div>
 

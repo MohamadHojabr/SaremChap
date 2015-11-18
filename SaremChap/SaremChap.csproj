@@ -588,6 +588,9 @@
     <Content Include="Views\Home\ContactUs.cshtml" />
     <Content Include="Views\Home\Privacy.cshtml" />
     <Content Include="Views\Home\AccountNumber.cshtml" />
+    <Content Include="Views\Home\Partials\ChapterInMenu.cshtml" />
+    <Content Include="Views\Home\Partials\ProductCategoryInMenu.cshtml" />
+    <Content Include="Views\Home\Partials\GalleryInMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
