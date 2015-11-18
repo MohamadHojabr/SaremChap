@@ -74,6 +74,30 @@ namespace SaremChap.Controllers
         
         }
 
+        public ActionResult AboutUs()
+        {
+            return View();
+        }
+
+        public ActionResult TermsOfUse()
+        {
+            return View();
+        }
+
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
+
+        public ActionResult Privacy()
+        {
+            return View();
+        }
+        public ActionResult AccountNumber()
+        {
+            return View();
+        }
+
 
     }
 }

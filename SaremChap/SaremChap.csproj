@@ -583,6 +583,11 @@
     <Content Include="Views\Home\Partials\briefInfo.cshtml" />
     <Content Include="Views\Home\Partials\typesOfServices.cshtml" />
     <Content Include="Views\Home\Partials\testimonials.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Home\TermsOfUse.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Home\Privacy.cshtml" />
+    <Content Include="Views\Home\AccountNumber.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
