@@ -28,6 +28,13 @@ namespace ServiceLayer.EFServices
             return list;
         }
 
+        public IList<ProductCategory> GetProductCategoryByName(string name)
+        {
+            var list = _productCategory.Include(p => p.Product).Where(p => p.Name.Equals(name)).ToList();
+            return list;
+        }
+
+
         public ProductCategory Get(int id)
         {
             throw new NotImplementedException();

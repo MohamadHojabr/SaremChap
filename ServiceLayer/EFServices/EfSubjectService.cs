@@ -27,6 +27,13 @@ namespace ServiceLayer.EFServices
             return list;
         }
 
+        public IList<Subject> GetSubjectsByChapter(string name)
+        {
+            var list = _subject.Where(s=>s.Chapter.Name.Equals(name)).OrderBy(s => s.SubjectDate).ToList();
+            return list;
+        }
+
+
         public Subject Get(int id)
         {
             throw new NotImplementedException();

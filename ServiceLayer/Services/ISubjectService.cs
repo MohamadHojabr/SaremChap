@@ -10,6 +10,7 @@ namespace ServiceLayer.Services
     public interface ISubjectService
     {
         IList<Subject> GetAllSubjects();
+        IList<Subject> GetSubjectsByChapter(string name);
         Subject Get(int id);
         Subject Add(Subject subject);
         void Remove(int id);

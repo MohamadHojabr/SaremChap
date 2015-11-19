@@ -1,0 +1,127 @@
+﻿@model IEnumerable<DomainClasses.Models.Subject>
+@{
+    ViewBag.Title = "Subjects";
+    Layout = "~/Views/Shared/_FrontLayout.cshtml";
+}
+
+<div id="container">
+
+
+
+    <div class="page-banner" style="padding:40px 0; background: url(/Content/images/slide-02-bg.jpg) center #f9f9f9;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="breadcrumbs" style="width:100%; text-align:right">
+                        <li>مطالب</li>
+                        <li><a href="/">صفحه اصلی</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6" style="text-align:right">
+                    <h2>مطالب</h2>
+                    <p>مرکز چاپ نوین</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Page Banner -->
+    <!-- Start Content -->
+    <div id="content">
+        <div class="container">
+            <div class="row blog-page">
+
+                <!-- Start Blog Posts -->
+                <div class="col-md-9 blog-box">
+
+                    @foreach (var item in Model)
+                    {
+                        ViewBag.Title = item.Chapter.Name;
+
+                        <div class="blog-post standard-post" style="direction:rtl">
+                            <!-- Post Thumb -->
+                            <div class="post-head" style="background:#f1f1f1">
+                                <a href="#">
+                                    <div class="thumb-overlay"><i class="fa fa-arrows-alt"></i></div>
+                                    <img alt="" src="@item.SubjectImage">
+                                </a>
+                            </div>
+                            <!-- Post Content -->
+                            <div class="post-content">
+                                <div class="post-type"><i class="fa fa-picture-o"></i></div>
+                                <h2 style="padding-right:50px"><a href="#">@item.SubjectLead</a></h2>
+                                <ul class="post-meta" style="padding-right:50px">
+                                    <li>نوشته شده توسط : <a href="#">@item.Authors</a></li>
+                                    <li> در تاریخ : @item.SubjectDate.ToString("dd/mm/yyyy")</li>
+                                    <li>گروه : <a href="#">@item.Chapter.Name</a></li>
+
+                                </ul>
+                                <p>
+
+                                    @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.SubjectContent))
+
+                                </p>
+                                <a class="main-button" href="/view/Subject/post/@item.SubjectId">  مطالعه بیشتر  <i class="fa fa-angle-left"> </i>  </a>
+                            </div>
+                        </div>
+                    }
+
+                    <div id="pagination">
+                        <ul id="pagination-demo" class="pagination-sm"></ul>
+                    </div>
+                    <!-- End Pagination -->
+
+                </div>
+                <!-- End Blog Posts -->
+                <!--Sidebar-->
+                <div class="col-md-3 sidebar right-sidebar">
+
+                    @*<!-- Search Widget -->
+                        <div class="widget widget-search">
+                            <form action="#">
+                                <input type="search" placeholder="Enter Keywords..." />
+                                <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+
+                        <!-- Categories Widget -->*@
+                    @{Html.RenderAction("LSCategoryList", "Partials", new { Area = "PartialsView" });}
+
+
+                    <!-- Popular Posts widget -->
+                    @{Html.RenderAction("LatesPost", "Partials", new { Area = "PartialsView" });}
+
+
+                    <!-- Tags Widget -->
+                    <div class="widget widget-tags">
+                        <h4>Tags <span class="head-line"></span></h4>
+                        <div class="tagcloud">
+                            <a href="#">Portfolio</a>
+                            <a href="#">Theme</a>
+                            <a href="#">Mobile</a>
+                            <a href="#">Design</a>
+                            <a href="#">Wordpress</a>
+                            <a href="#">Jquery</a>
+                            <a href="#">CSS</a>
+                            <a href="#">Modern</a>
+                            <a href="#">Theme</a>
+                            <a href="#">Icons</a>
+                            <a href="#">Google</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!--End sidebar-->
+
+
+            </div>
+        </div>
+    </div>
+    <!-- End Content -->
+
+
+</div>
+<!-- End Container -->
+<!-- Go To Top Link -->
+<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
