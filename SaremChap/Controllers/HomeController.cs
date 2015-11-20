@@ -14,7 +14,6 @@ namespace SaremChap.Controllers
         private IUnitOfWork _uow;
         private ISubjectService _subjectService;
         private IProductCategoryService _productCategoryService;
-        private IChapterService _chapterService;
         private IGalleryService _galleryService;
 
         public HomeController(IUnitOfWork uow, ISubjectService subjectService, IProductCategoryService categoryService, IChapterService chapterService, IGalleryService galleryService)
@@ -22,29 +21,16 @@ namespace SaremChap.Controllers
             _uow = uow;
             _subjectService = subjectService;
             _productCategoryService = categoryService;
-            _chapterService = chapterService;
             _galleryService = galleryService;
         }
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "صفحه اصلی";
 
             return View();
         }
 
-        [ChildActionOnly]
-        public ActionResult ChapterInMenu()
-        {
-            var chapter = _chapterService.GetAllChapters();
-            return PartialView("Partials/ChapterInMenu", chapter);
-        }
 
-        [ChildActionOnly]
-        public ActionResult ProductCategoryInMenu()
-        {
-            var productCategories = _productCategoryService.GetAllProductCategorys().ToList();
-            return PartialView("Partials/ProductCategoryInMenu", productCategories);
-        }
         [ChildActionOnly]
         public ActionResult GalleryInMenu()
         {

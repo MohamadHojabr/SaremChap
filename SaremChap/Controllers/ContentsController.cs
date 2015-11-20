@@ -22,9 +22,11 @@ namespace SaremChap.Controllers
         }
         //
         // GET: /Contents/
-        public ActionResult Index()
+        [ChildActionOnly]
+        public ActionResult ChapterInMenu()
         {
-            return View();
+            var chapter = _chapterService.GetAllChapters();
+            return PartialView("Partials/ChapterInMenu", chapter);
         }
 
         public ActionResult Subjects(string name)

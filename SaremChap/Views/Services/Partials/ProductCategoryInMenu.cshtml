@@ -1,0 +1,42 @@
+﻿
+@model IEnumerable<DomainClasses.Models.ProductCategory>
+
+@foreach (var item in Model.GroupBy(x => x.SuperCategory).OrderByDescending(x => x.Key))
+{
+    <div class="col-md-3">
+
+        <h5>
+            @{
+    string value = item.Key.ToString();
+    var str = "";
+    // ... Switch on the string.
+    switch (value)
+    {
+        case "TilePrint":
+            str = "چاپ روی انواع کاشی";
+            break;
+        case "DishPrint":
+            str = "چاپ روی انواع ظروف";
+            break;
+        case "ClothesPrint":
+            str = "چاپ روی انواع لباس";
+            break;
+        case "OtherPrint":
+            str = "چاپ روی دیگر سطوح";
+            break;
+
+    }
+            }
+
+            @str
+
+        </h5>
+
+        @foreach (var g in item)
+        {
+            <p><a href="/services/service/?name=@g.Name">@g.Name</a></p>
+
+        }
+    </div>
+}
+

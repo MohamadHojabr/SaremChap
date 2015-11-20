@@ -34,6 +34,13 @@ namespace ServiceLayer.EFServices
             return list;
         }
 
+        public IList<ProductCategory> GetProductCategoryById(int id)
+        {
+            var list = _productCategory.Include(p => p.Product).Where(p => p.ProductCategoryId == id).ToList();
+            return list;
+        }
+
+
 
         public ProductCategory Get(int id)
         {

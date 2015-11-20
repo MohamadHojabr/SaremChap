@@ -589,12 +589,13 @@
     <Content Include="Views\Home\ContactUs.cshtml" />
     <Content Include="Views\Home\Privacy.cshtml" />
     <Content Include="Views\Home\AccountNumber.cshtml" />
-    <Content Include="Views\Home\Partials\ChapterInMenu.cshtml" />
-    <Content Include="Views\Home\Partials\ProductCategoryInMenu.cshtml" />
+    <Content Include="Views\Contents\Partials\ChapterInMenu.cshtml" />
+    <Content Include="Views\Services\Partials\ProductCategoryInMenu.cshtml" />
     <Content Include="Views\Home\Partials\GalleryInMenu.cshtml" />
     <Content Include="Views\Services\Index.cshtml" />
     <Content Include="Views\Services\Service.cshtml" />
     <Content Include="Views\Contents\Subjects.cshtml" />
+    <Content Include="Views\Services\ServiceDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

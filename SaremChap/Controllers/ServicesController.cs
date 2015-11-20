@@ -19,6 +19,13 @@ namespace SaremChap.Controllers
             _productCategoryService = productCategoryService;
             _productService = productService;
         }
+        [ChildActionOnly]
+        public ActionResult ProductCategoryInMenu()
+        {
+            var productCategories = _productCategoryService.GetAllProductCategorys().ToList();
+            return PartialView("Partials/ProductCategoryInMenu", productCategories);
+        }
+
         public ActionResult Index(string name)
         {
             var list = _productCategoryService.GetAllProductCategorys();
@@ -30,6 +37,15 @@ namespace SaremChap.Controllers
             var list = _productCategoryService.GetProductCategoryByName(name);
             return View(list);
         }
+
+        public ActionResult ServiceDetail(int id , string name)
+        {
+            var list = _productService.GetProductByNameAndId(name, id);
+            return View(list);
+        }
+
+
+
 
 	}
 }

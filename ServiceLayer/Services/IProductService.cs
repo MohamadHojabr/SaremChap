@@ -10,6 +10,7 @@ namespace ServiceLayer.Services
     public interface IProductService
     {
         IList<Product> GetAllProducts();
+        Product GetProductByNameAndId(string name, int id);
         Product Get(int id);
         Product Add(Product product);
         void Remove(int id);

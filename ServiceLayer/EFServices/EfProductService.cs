@@ -27,6 +27,13 @@ namespace ServiceLayer.EFServices
             throw new NotImplementedException();
         }
 
+        public Product GetProductByNameAndId(string name , int id)
+        {
+            var product = _product.FirstOrDefault(p => p.Name.Equals(name) && p.ProductId == id);
+
+            return product;
+        } 
+
         public Product Get(int id)
         {
             throw new NotImplementedException();

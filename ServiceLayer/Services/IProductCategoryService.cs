@@ -11,6 +11,7 @@ namespace ServiceLayer.Services
     {
         IList<ProductCategory> GetAllProductCategorys();
         IList<ProductCategory> GetProductCategoryByName(string name);
+        IList<ProductCategory> GetProductCategoryById(int id);
         ProductCategory Get(int id);
         ProductCategory Add(ProductCategory productCategory);
         void Remove(int id);
