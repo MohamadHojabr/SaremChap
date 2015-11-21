@@ -1,0 +1,15 @@
+﻿@model IEnumerable<DomainClasses.Models.Chapter>
+
+<div class="widget widget-categories">
+    <h4>گروههای مطالب <span class="head-line"></span></h4>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="/contents/Subjects/?chapter=@item.Name">@Html.DisplayFor(modelItem => item.Name)</a>
+            </li>
+        }
+
+    </ul>
+</div>
+

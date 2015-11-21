@@ -11,6 +11,7 @@ namespace ServiceLayer.Services
     {
         IList<Subject> GetAllSubjects();
         IList<Subject> GetSubjectsByChapter(string name);
+        Subject GetSubjectByLead(string lead);
         Subject Get(int id);
         Subject Add(Subject subject);
         void Remove(int id);

@@ -29,10 +29,31 @@ namespace SaremChap.Controllers
             return PartialView("Partials/ChapterInMenu", chapter);
         }
 
-        public ActionResult Subjects(string name)
+        [ChildActionOnly]
+        public ActionResult PartialChapters()
         {
-            var list = _subjectService.GetSubjectsByChapter(name);
+            var chapter = _chapterService.GetAllChapters().Take(4);
+            return PartialView("Partials/PartialChapters", chapter);
+        }
+
+        [ChildActionOnly]
+        public ActionResult PartialLatesSubjects()
+        {
+            var subjects = _subjectService.GetAllSubjects().OrderBy(s => s.SubjectDate).Take(4);
+            return PartialView("Partials/PartialLatesSubjects", subjects);
+        }
+
+        public ActionResult Subjects(string chapter)
+        {
+            var list = _subjectService.GetSubjectsByChapter(chapter);
             return View(list);
         }
+
+        public ActionResult Subject(string lead)
+        {
+            var list = _subjectService.GetSubjectByLead(lead);
+            return View(list);
+        }
+
 	}
 }

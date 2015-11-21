@@ -596,6 +596,9 @@
     <Content Include="Views\Services\Service.cshtml" />
     <Content Include="Views\Contents\Subjects.cshtml" />
     <Content Include="Views\Services\ServiceDetail.cshtml" />
+    <Content Include="Views\Contents\Subject.cshtml" />
+    <Content Include="Views\Contents\Partials\PartialChapters.cshtml" />
+    <Content Include="Views\Contents\Partials\PartialLatesSubjects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

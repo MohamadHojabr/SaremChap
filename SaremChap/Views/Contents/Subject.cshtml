@@ -1,0 +1,149 @@
+﻿@model DomainClasses.Models.Subject
+@{
+    ViewBag.Title = "Subject";
+    Layout = "~/Views/Shared/_FrontLayout.cshtml";
+}
+
+<div id="container">
+
+
+
+    <div class="page-banner" style="padding:40px 0; background: url(/Content/images/slide-02-bg.jpg) center #f9f9f9;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="breadcrumbs" style="width:100%; text-align:right">
+                        <li>@Model.SubjectLead</li>
+                        <li><a href="/view/Subject/list/@Model.Chapter.ChapterId">@Model.Chapter.Name</a></li>
+                        <li><a href="/">صفحه اصلی</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6" style="text-align:right">
+                    <h2>مطالب</h2>
+                    <p>مرکز چاپ نوین</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Page Banner -->
+    <!-- Start Content -->
+    <div id="content">
+        <div class="container">
+            <div class="row blog-page">
+
+                <!-- Start Blog Posts -->
+                <div class="col-md-9 blog-box">
+
+
+                    <div class="blog-post gallery-post" style="direction:rtl">
+
+                        <!-- Start Single Post (Gallery Slider) -->
+                        <div class="post-head" style="background:#f1f1f1">
+                            <a href="#">
+                                <div class="thumb-overlay"><i class="fa fa-arrows-alt"></i></div>
+                                <img alt="" src="@Model.SubjectImage">
+                            </a>
+                        </div>
+                        <!-- End Single Post (Gallery) -->
+                        <!-- Start Single Post Content -->
+                        <div class="post-content">
+                            <div class="post-type"><i class="fa fa-picture-o"></i></div>
+                            <h2 style="padding-right:50px"><a href="#">@Model.SubjectLead</a></h2>
+                            <ul class="post-meta" style="padding-right:50px">
+                                <li>نوشته شده توسط : <a href="#">@Model.Authors</a></li>
+                                <li> در تاریخ : @Model.SubjectDate.ToString("dd/mm/yyyy")</li>
+                                <li>گروه : <a href="#">@Model.Chapter.Name</a></li>
+
+                            </ul>
+                            <p>
+
+                                @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.SubjectContent))
+
+                            </p>
+
+                            <div class="post-bottom clearfix">
+                                <div class="post-tags-list">
+                                    <a href="#">Theme</a>
+                                    <a href="#">Mobile</a>
+                                    <a href="#">Design</a>
+                                    <a href="#">Wordpress</a>
+                                    <a href="#">Jquery</a>
+                                </div>
+                                <div class="post-share">
+                                    <span>انتشار این مطلب :</span>
+                                    <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+                                    <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+                                    <a class="gplus" href="#"><i class="fa fa-google-plus"></i></a>
+                                    <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+                                    <a class="mail" href="#"><i class="fa fa-envelope"></i></a>
+                                </div>
+                            </div>
+                            @*<div class="author-info clearfix">
+                                    <div class="author-image">
+                                        <a href="#"><img alt="" src="images/author.png" /></a>
+                                    </div>
+                                    <div class="author-bio">
+                                        <h4>About The Author</h4>
+                                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia desrut mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+                                    </div>
+                                </div>*@
+                        </div>
+                        <!-- End Single Post Content -->
+
+                    </div>
+
+                </div>
+                <!-- End Blog Posts -->
+                <!--Sidebar-->
+                <div class="col-md-3 sidebar right-sidebar">
+
+                    @*<!-- Search Widget -->
+                        <div class="widget widget-search">
+                            <form action="#">
+                                <input type="search" placeholder="Enter Keywords..." />
+                                <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+
+                        <!-- Categories Widget -->*@
+                    @*@{Html.RenderAction("LSCategoryList", "Partials", new { Area = "PartialsView" });}*@
+
+
+                    <!-- Popular Posts widget -->
+                    @*@{Html.RenderAction("LatesPost", "Partials", new { Area = "PartialsView" });}*@
+
+
+                    <!-- Tags Widget -->
+                    <div class="widget widget-tags">
+                        <h4>Tags <span class="head-line"></span></h4>
+                        <div class="tagcloud">
+                            <a href="#">Portfolio</a>
+                            <a href="#">Theme</a>
+                            <a href="#">Mobile</a>
+                            <a href="#">Design</a>
+                            <a href="#">Wordpress</a>
+                            <a href="#">Jquery</a>
+                            <a href="#">CSS</a>
+                            <a href="#">Modern</a>
+                            <a href="#">Theme</a>
+                            <a href="#">Icons</a>
+                            <a href="#">Google</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!--End sidebar-->
+
+
+            </div>
+        </div>
+    </div>
+    <!-- End Content -->
+
+
+</div>
+<!-- End Container -->
+<!-- Go To Top Link -->
+<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+

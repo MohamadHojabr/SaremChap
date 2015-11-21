@@ -33,6 +33,12 @@ namespace ServiceLayer.EFServices
             return list;
         }
 
+        public Subject GetSubjectByLead(string lead)
+        {
+            var list = _subject.FirstOrDefault(s => s.SubjectLead.Equals(lead));
+            return list;
+        }
+
 
         public Subject Get(int id)
         {

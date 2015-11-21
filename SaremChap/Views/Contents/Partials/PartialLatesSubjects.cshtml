@@ -1,0 +1,22 @@
+﻿
+@model IEnumerable<DomainClasses.Models.Subject>
+
+<div class="widget widget-popular-posts">
+    <h4>جدید ترین مطالب <span class="head-line"></span></h4>
+    <ul>
+        @foreach (var item in Model)
+        {
+
+            <li>
+                <div class="widget-thumb">
+                    <a href="/contents/subject/?lead=@item.SubjectLead"><img src=@item.SubjectImage alt="" /></a>
+                </div>
+                <div class="widget-content">
+                    <h5><a href="/contents/subject/?lead=@item.SubjectLead">@item.SubjectLead</a></h5>
+                    <span>@item.SubjectDate.ToString("dd/mm/yyyy")</span>
+                </div>
+                <div class="clearfix"></div>
+            </li>
+        }
+    </ul>
+</div>

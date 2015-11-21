@@ -61,7 +61,7 @@
                                     @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.SubjectContent))
 
                                 </p>
-                                <a class="main-button" href="/view/Subject/post/@item.SubjectId">  مطالعه بیشتر  <i class="fa fa-angle-left"> </i>  </a>
+                                <a class="main-button" href="/contents/Subject/?lead=@item.SubjectLead">  مطالعه بیشتر  <i class="fa fa-angle-left"> </i>  </a>
                             </div>
                         </div>
                     }
@@ -76,7 +76,7 @@
                 <!--Sidebar-->
                 <div class="col-md-3 sidebar right-sidebar">
 
-                    @*<!-- Search Widget -->
+                    <!-- Search Widget -->
                         <div class="widget widget-search">
                             <form action="#">
                                 <input type="search" placeholder="Enter Keywords..." />
@@ -84,12 +84,12 @@
                             </form>
                         </div>
 
-                        <!-- Categories Widget -->*@
-                    @{Html.RenderAction("LSCategoryList", "Partials", new { Area = "PartialsView" });}
+                        <!-- Categories Widget -->
+                    @{Html.RenderAction("PartialChapters", "Contents");}
 
 
                     <!-- Popular Posts widget -->
-                    @{Html.RenderAction("LatesPost", "Partials", new { Area = "PartialsView" });}
+                    @{Html.RenderAction("PartialLatesSubjects", "Contents");}
 
 
                     <!-- Tags Widget -->
