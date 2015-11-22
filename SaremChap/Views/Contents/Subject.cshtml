@@ -97,22 +97,18 @@
                 <!-- End Blog Posts -->
                 <!--Sidebar-->
                 <div class="col-md-3 sidebar right-sidebar">
-
-                    @*<!-- Search Widget -->
-                        <div class="widget widget-search">
-                            <form action="#">
-                                <input type="search" placeholder="Enter Keywords..." />
-                                <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
-
-                        <!-- Categories Widget -->*@
-                    @*@{Html.RenderAction("LSCategoryList", "Partials", new { Area = "PartialsView" });}*@
-
+                    <!-- Search Widget -->
+                    <div class="widget widget-search">
+                        <form action="#">
+                            <input type="search" placeholder="Enter Keywords..." />
+                            <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <!-- Categories Widget -->
+                    @{Html.RenderAction("PartialChapters", "Contents");}
 
                     <!-- Popular Posts widget -->
-                    @*@{Html.RenderAction("LatesPost", "Partials", new { Area = "PartialsView" });}*@
-
+                    @{Html.RenderAction("PartialLatesSubjects", "Contents");}
 
                     <!-- Tags Widget -->
                     <div class="widget widget-tags">
@@ -131,7 +127,6 @@
                             <a href="#">Google</a>
                         </div>
                     </div>
-
                 </div>
                 <!--End sidebar-->
 
