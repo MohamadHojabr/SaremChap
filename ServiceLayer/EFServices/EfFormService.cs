@@ -24,12 +24,14 @@ namespace ServiceLayer.EFServices
 
         public IList<Form> GetAllForms()
         {
-            throw new NotImplementedException();
+            var list = _form.ToList();
+            return list;
         }
 
         public Form Get(int id)
         {
-            throw new NotImplementedException();
+            var form = _form.Find(id);
+            return form;
         }
 
         public Form Add(Form form)

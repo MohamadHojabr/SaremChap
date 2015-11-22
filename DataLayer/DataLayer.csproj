@@ -48,17 +48,12 @@
   <ItemGroup>
     <Compile Include="Context\IUnitOfWork.cs" />
     <Compile Include="Context\SaremChapContext.cs" />
-    <Compile Include="Migrations\201510290711055_InitialCreate.cs" />
-    <Compile Include="Migrations\201510290711055_InitialCreate.Designer.cs">
-      <DependentUpon>201510290711055_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201511221942431_njhg.cs" />
+    <Compile Include="Migrations\201511221942431_njhg.Designer.cs">
+      <DependentUpon>201511221942431_njhg.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201510290711055_InitialCreate.resx">
-      <DependentUpon>201510290711055_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -69,6 +64,11 @@
       <Project>{86fa4a66-d411-4d83-9d8c-0c9257ea031e}</Project>
       <Name>DomainClasses</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201511221942431_njhg.resx">
+      <DependentUpon>201511221942431_njhg.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

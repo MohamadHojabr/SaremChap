@@ -1,0 +1,668 @@
+﻿@using DomainClasses.Enums
+@model IEnumerable<DomainClasses.Models.Field>
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_FrontLayout.cshtml";
+}
+
+
+<script type="text/javascript">
+    var plusPrice = 0;
+
+</script>
+
+
+<div class="form-horizontal">
+    <div class="container">
+        <div class="row call-action call-action-boxed call-action-style1 clearfix">
+            <div class="row">
+                <h3 class="text-right primary">@ViewBag.form.Fa_Title</h3>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="call-action call-action-boxed call-action-style3 clearfix">
+                        @foreach (var list in ViewBag.PriceList)
+                        {
+                            <h4 class="text-right" style="color:#ffffff">@list.Neme : <span style="color:#ffffff">@list.Value.ToString("0.#####")</span></h4>
+
+                            <input type="hidden" class="quantity" style="color:#ffffff" data-val="@list.Value" value="@list.Quantity" />
+
+                        }
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="call-action call-action-boxed call-action-style3 clearfix">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 id="singlePrice" style="color:#ffffff">0</h3>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 style="color:#ffffff">قیمت واحد</h3>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="call-action call-action-boxed call-action-style3 clearfix">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="text-right" style="color:#ffffff">@ViewBag.RelatedProduct.Name</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="@ViewBag.RelatedProduct.Imege" class="img-thumbnail" width="150" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br />
+        @using (Html.BeginForm())
+        {
+
+            @Html.AntiForgeryToken()
+            for (int i = 0; i < Model.Count(); i++)
+            {
+
+
+
+                if (Model.ElementAt(i).FieldType == FieldType.Number)
+                {
+                    string require = "";
+                    string disable = "";
+                    <div class="form-group">
+                        @{
+                            <text>
+                                <input type="hidden" name="[@i].FieldType" value="@Model.ElementAt(i).FieldType" />
+                                <input type="hidden" name="[@i].Id" value="@Model.ElementAt(i).Id" />
+                                <input type="hidden" name="[@i].FormId" value="@Model.ElementAt(i).FormId" />
+                                @if (Model.ElementAt(i).RequiredField)
+                                {
+                                    require = "required";
+                                }
+                                else
+                                {
+                                    require = "";
+                                }
+
+                                @if (Model.ElementAt(i).DisabledField)
+                                {
+                                    disable = "disabled";
+                                }
+                                else
+                                {
+                                    disable = "";
+                                }
+                                <div class="col-md-6"></div>
+                                @*@if (Model.ElementAt(i).EffectivePrice)
+                                    {*@
+                                <input id="finance" type="hidden" value="@Model.ElementAt(i).Finance" />
+                                <div class="col-md-4">
+                                    <input type="text" oninput="inputFunction()" id="number" name="[@i].TitleEn" class="form-control" data-validetta="number,@require" data-finance="@Model.ElementAt(i).Finance" @disable value="0" />
+                                </div>
+                                <label class="col-md-2 control-label text-right">@Model.ElementAt(i).TitleFa</label>
+
+                                <script>
+                                    function inputFunction() {
+
+                                        UpdatePrice()
+                                    }
+                                </script>
+                            </text>
+                        }
+                    </div>
+                    <hr />
+                }
+
+                if (Model.ElementAt(i).FieldType == FieldType.Geocaching)
+                {
+                    string require = "";
+                    string disable = "";
+                    <div class="form-group">
+                        @{
+                            <text>
+                                <input type="hidden" name="[@i].FieldType" value="@Model.ElementAt(i).FieldType" />
+                                <input type="hidden" name="[@i].Id" value="@Model.ElementAt(i).Id" />
+                                <input type="hidden" name="[@i].FormId" value="@Model.ElementAt(i).FormId" />
+                                @if (Model.ElementAt(i).RequiredField)
+                                {
+                                    require = "required";
+                                }
+                                else
+                                {
+                                    require = "";
+                                }
+
+                                @if (Model.ElementAt(i).DisabledField)
+                                {
+                                    disable = "disabled";
+                                }
+                                else
+                                {
+                                    disable = "";
+                                }
+                                <div class="col-md-6"></div>
+
+                                <input id="finance" type="hidden" value="@Model.ElementAt(i).Finance" />
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">cm</div>
+                                        <input type="number" id="area_length" oninput="GeocachingFunction()" class="form-control text-right" />
+                                        <div class="input-group-addon">طول</div>
+                                    </div>
+                                    <br />
+                                    <div class="input-group">
+                                        <div class="input-group-addon">cm</div>
+                                        <input type="number" id="area_width" oninput="GeocachingFunction()" class="form-control text-right" />
+                                        <div class="input-group-addon">عرض</div>
+                                    </div>
+                                    <br />
+                                    <div class="input-group">
+                                        <div class="input-group-addon">متر</div>
+                                        <input type="text" oninput="GeocachingFunction()" id="geocaching" name="[@i].TitleEn" class="form-control" @disable data-validetta="number,@require" value="0" />
+                                        <div class="input-group-addon">مساحت کل</div>
+                                    </div>
+
+                                </div>
+                                <label class="col-md-2 control-label text-right">@Model.ElementAt(i).TitleFa</label>
+
+                                <script>
+                                    function GeocachingFunction() {
+                                        var area_width = $("#area_width").val() / 100;
+                                        var area_length = $("#area_length").val() / 100;
+                                        var geocaching = area_width * area_length;
+                                        $("#geocaching").attr("value", geocaching);
+                                        UpdatePrice()
+
+                                    }
+                                </script>
+                            </text>
+                        }
+                    </div>
+                    <hr />
+                }
+
+
+                if (Model.ElementAt(i).FieldType == FieldType.Text)
+                {
+                    string require = "";
+                    string disable = "";
+                    <div class="form-group">
+                        @{
+                            <text>
+                                <input type="hidden" name="[@i].FieldType" value="@Model.ElementAt(i).FieldType" />
+                                <input type="hidden" name="[@i].Id" value="@Model.ElementAt(i).Id" />
+                                <input type="hidden" name="[@i].FormId" value="@Model.ElementAt(i).FormId" />
+                                @if (Model.ElementAt(i).RequiredField)
+                                {
+                                    require = "required";
+                                }
+                                else
+                                {
+                                    require = "";
+                                }
+
+                                @if (Model.ElementAt(i).DisabledField)
+                                {
+                                    disable = "disabled";
+                                }
+                                else
+                                {
+                                    disable = "";
+                                }
+
+                                <div class="col-md-6"></div>
+                                <div class="col-md-4">
+                                    <input type="text" oninput="inputFunction()" id="txt" name="[@i].TitleEn" class="form-control" data-finance="@Model.ElementAt(i).Finance" @disable data-validetta="@require" />
+                                </div>
+                                <label class="col-md-2 control-label text-right">@Model.ElementAt(i).TitleFa</label>
+
+                            </text>
+                        }
+                    </div>
+                    <hr />
+                }
+
+                else if (Model.ElementAt(i).FieldType == FieldType.Checkbox)
+                {
+                    string require = "";
+                    string disable = "";
+                    <text>
+                        <div class="form-group">
+                            <input type="hidden" name="[@i].FieldType" value="@Model.ElementAt(i).FieldType" />
+                            <input type="hidden" name="[@i].Id" value="@Model.ElementAt(i).Id" />
+                            <input type="hidden" name="[@i].FormId" value="@Model.ElementAt(i).FormId" />
+                            @if (Model.ElementAt(i).RequiredField)
+                            {
+                                require = "required";
+                            }
+                            else
+                            {
+                                require = "";
+
+                            }
+
+                            @if (Model.ElementAt(i).DisabledField)
+                            {
+                                disable = "disabled";
+                            }
+                            else
+                            {
+
+                                disable = "";
+                            }
+                            <div class="col-md-6"></div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="checkbox" name="[@i].TitleEn" id="@i@Model.ElementAt(i).FieldType" class="form-control" data-finance="@Model.ElementAt(i).Finance" data-validetta="@require" @disable />
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        @Model.ElementAt(i).TitleFa
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr />
+                        <script type="text/javascript">
+
+
+
+                            $('#@i@Model.ElementAt(i).FieldType').click(function () {
+
+                                var finance = $('#@i@Model.ElementAt(i).FieldType').attr("data-finance");
+
+                                if (this.checked & finance != "") {
+                                    plusPrice = plusPrice + parseInt(finance);
+
+                                    UpdatePrice()
+                                    console.log("run check")
+                                } else if (finance != "") {
+                                    plusPrice = plusPrice - parseInt(finance);
+                                    UpdatePrice()
+                                    console.log("run UNcheck")
+                                }
+                            })
+                        </script>
+                    </text>
+                }
+
+                else if (Model.ElementAt(i).FieldType == FieldType.Radio)
+                {
+
+                    <text>
+                        <div class="form-group">
+                            <input type="hidden" name="[@i].FieldType" value="@Model.ElementAt(i).FieldType" />
+                            <input type="hidden" name="[@i].Id" value="@Model.ElementAt(i).Id" />
+                            <input type="hidden" name="[@i].FormId" value="@Model.ElementAt(i).FormId" />
+
+
+                            <div class="col-md-6"></div>
+                            <div class="col-md-4" style="background:#e2e2e2; border-radius:3px; align-content:stretch">
+                                @foreach (string word in Model.ElementAt(i).Options.Split(','))
+                                {
+                                    <label class="radio-inline" style="float:right">
+                                        @word
+                                        <input type="radio" name="[@i].TitleEn" class="form-control" data-finance="@Model.ElementAt(i).Finance" value="@word" data-validetta="required">
+                                    </label>
+                                }
+                            </div>
+                            <div class="col-md-2">
+                                <p class="text-right">@Model.ElementAt(i).TitleFa</p>
+                            </div>
+
+
+
+                        </div>
+
+                        <hr />
+
+                    </text>
+
+                }
+
+                else if (Model.ElementAt(i).FieldType == FieldType.Dropdown)
+                {
+                    <text>
+
+                        <div class="form-group">
+                            <input type="hidden" name="[@i].FieldType" value="@Model.ElementAt(i).FieldType" />
+                            <input type="hidden" name="[@i].Id" value="@Model.ElementAt(i).Id" />
+                            <input type="hidden" name="[@i].FormId" value="@Model.ElementAt(i).FormId" />
+
+                            <div class="col-md-6"></div>
+                            <div class="col-md-4">
+                                <select name="[@i].TitleEn" class="form-control" data-finance="@Model.ElementAt(i).Finance" data-validetta="required">
+                                    @foreach (string word in Model.ElementAt(i).Options.Split(','))
+                                    {
+                                        <option value="@word">@word</option>
+                                    }
+                                </select>
+                            </div>
+                            <label class="col-md-2 control-label text-right">@Model.ElementAt(i).TitleFa</label>
+
+                        </div>
+                        <hr />
+
+                    </text>
+
+                }
+
+                else if (Model.ElementAt(i).FieldType == FieldType.TextArea)
+                {
+                    <text>
+                        <div class="form-group">
+                            <input type="hidden" name="[@i].FieldType" value="@Model.ElementAt(i).FieldType" />
+                            <input type="hidden" name="[@i].Id" value="@Model.ElementAt(i).Id" />
+                            <input type="hidden" name="[@i].FormId" value="@Model.ElementAt(i).FormId" />
+
+                            <div class="col-md-6"></div>
+                            <div class="col-md-4">
+                                <textarea name="[@i].TitleEn" class="form-control" rows="3" data-validetta="required"></textarea>
+                            </div>
+                            <label class="col-md-2 control-label text-right">@Model.ElementAt(i).TitleFa</label>
+
+                        </div>
+                        <hr />
+
+                    </text>
+
+                }
+
+                else if (Model.ElementAt(i).FieldType == FieldType.ShippingCost)
+                {
+                    <text>
+                        <div class="form-group">
+                            <input type="hidden" name="[@i].FieldType" value="@Model.ElementAt(i).FieldType" />
+                            <input type="hidden" name="[@i].Id" value="@Model.ElementAt(i).Id" />
+                            <input type="hidden" name="[@i].FormId" value="@Model.ElementAt(i).FormId" />
+
+                            <div class="col-md-6"></div>
+                            <div class="col-md-4">
+                                <select name="[@i].TitleEn" id="dropdownID" onchange="ShippingPrice()" class="form-control text-right" data-finance="@Model.ElementAt(i).Finance" data-validetta="required" style="direction: rtl">
+
+                                    <option value="0">پست پیشتاز : برای شهرستان ( 1 عدد 15500 تومان و برای هر عدد اضافه 1200 تومان اضافه شود )</option>
+                                    <option value="0">پیک : در تهران ( هزینه بصورت جدا گانه توسط پیک در محل از مشتری دریافت میشود )</option>
+                                    <option value="0">باربری : برای شهرستان ( بصورت پس کرایه )</option>
+                                    <option value="0">حضوری </option>
+
+                                </select>
+                            </div>
+                            <label class="col-md-2 control-label text-right">@Model.ElementAt(i).TitleFa</label>
+
+                        </div>
+                        <hr />
+
+                    </text>
+
+                }
+
+                else if (Model.ElementAt(i).FieldType == FieldType.Image)
+                {
+                    <text>
+
+                        <div class="form-group">
+                            <input type="hidden" name="[@i].FieldType" value="@Model.ElementAt(i).FieldType" />
+                            <input type="hidden" name="[@i].Id" value="@Model.ElementAt(i).Id" />
+                            <input type="hidden" name="[@i].FormId" value="@Model.ElementAt(i).FormId" />
+
+
+                            <div class="col-md-10">
+                                <div class="dropzone dropzone-previews" id="my-awesome-dropzone"></div>
+                                <input type="hidden" id="img-url" name="[@i].TitleEn" class="form-control" value="" data-validetta="required">
+
+                            </div>
+                            <label class="col-md-2 control-label text-right">@Model.ElementAt(i).TitleFa</label>
+
+                        </div>
+                        <hr />
+
+                    </text>
+
+                }
+
+                else if (Model.ElementAt(i).FieldType == FieldType.TotalPrice)
+                {
+                    <text>
+
+                        <div class="form-group">
+                            <input type="hidden" name="[@i].FieldType" value="@Model.ElementAt(i).FieldType" />
+                            <input type="hidden" name="[@i].Id" value="@Model.ElementAt(i).Id" />
+                            <input type="hidden" name="[@i].FormId" value="@Model.ElementAt(i).FormId" />
+
+
+                            <div class="col-md-10">
+
+                                <input type="hidden" id="total_price" name="[@i].TitleEn" value="0">
+
+                            </div>
+                            <label class="col-md-2 control-label text-right">@Model.ElementAt(i).TitleFa</label>
+
+                        </div>
+                        <hr />
+
+                    </text>
+
+                }
+
+
+
+
+            }
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="call-action call-action-boxed call-action-style3 clearfix">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 id="totalPrice" style="color:#ffffff">0</h3>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 style="color:#ffffff">هزینه سفارش</h3>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 id="shippingPrice" style="color:#ffffff">0</h3>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 style="color:#ffffff">هزینه حمل و نقل</h3>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 id="FinalPrice" style="color:#ffffff">0</h3>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 style="color:#ffffff">جمع هزینه</h3>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="form-group" data-formid="@ViewBag.FormId">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="ارسال فرم" class="submitclick" />
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        Dropzone.options.myAwesomeDropzone = { // The camelized version of the ID of the form element
+            // The configuration we've talked about above
+            url: '/FormGenerate/ShowForm/SaveUploadedImage',
+            previewsContainer: ".dropzone-previews",
+            uploadMultiple: true,
+            parallelUploads: 100,
+            maxFiles: 3,
+            addRemoveLinks: true,
+            clickable: true,
+            accept: function (file, done) {
+
+                done();
+            },
+            init: function () {
+
+                this.on("success", function (file) {
+                    var img_holder = "/Images/WallImages/OrderImage/";
+                    var img_name = file.name;
+                    var img_url = img_holder + img_name;
+                    $("#img-url").attr("value", img_url);
+
+                    console.log($("#img-url").val());
+                });
+
+                this.on("addedfile", function (file) {
+                    //todo
+                });
+
+
+            }
+
+        }
+
+    });
+
+    //File Upload response from the server
+    $(document).ready(function () {
+
+        Dropzone.options.dropzonef = {
+
+
+            maxFiles: 1,
+
+            enqueueForUpload: true,
+            thumbnailWidth: "250",
+            thumbnailHeight: "250",
+            accept: function (file, done) {
+                console.log("uploaded");
+                done();
+            },
+
+
+        };
+
+    });
+    $(document).ready(function () {
+
+        $.ajax({
+
+            url: "/home/imageList",
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            dataType: 'html'
+
+        })
+                 .success(function (result) {
+
+                     $('#imageList-container').html(result).fadeIn();
+
+
+                 })
+    });
+
+
+
+
+</script>
+
+
+
+<script type="text/javascript">
+
+
+    var SinglePrice;
+    SinglePrice = $("#singlePrice").text();
+    var shippingPrice = $("#shippingPrice").text()
+    var finalPrice = $("#FinalPrice").text()
+
+
+
+    function ShippingPrice() {
+        var did = $('#dropdownID').val();
+        shippingPrice = did;
+        $('#shippingPrice').text(shippingPrice)
+        FinalPrice();
+    }
+
+    function UpdatePrice() {
+
+        if ($('#number').length) {
+            var get_Number = $("#number").val();
+        } else if ($('#geocaching').length) {
+            var get_Number = $("#geocaching").val();
+        } else if ($('#number').length & $('#geocaching').length) {
+            alert("ساختار فرم دچار اشکال میباشد")
+        } else {
+            alert("ساختار فرم دچار اشکال میباشد")
+        }
+
+        $.each($('.quantity'), function (index, value) {
+            var int = parseInt($(this).val())
+            var sp = parseInt($(this).attr("data-val"));
+            if (get_Number > int) {
+
+                SinglePrice = sp;
+
+                $('#singlePrice').text(sp)
+            }
+        });
+
+        console.log(plusPrice);
+        var sp = SinglePrice + plusPrice
+        $('#singlePrice').text(sp)
+        var total = sp * get_Number;
+        $('#totalPrice').text(total);
+
+
+        FinalPrice();
+    }
+
+    function FinalPrice() {
+        var total = $('#totalPrice').text()
+        var final = parseInt(total) + parseInt(shippingPrice);
+        $('#total_price').attr("value", final);
+        $('#FinalPrice').text(final)
+    }
+
+
+
+    $(document).ready(function () {
+        $("form").validetta();
+    })
+
+
+    /////Start - DropZone
+    //File Upload response from the server
+
+    /////End - DropZone
+
+</script>
+<style>
+    #dropZone {
+        background: gray;
+        border: black dashed 3px;
+        width: 100%;
+        height: 100px;
+        padding: 20px;
+        text-align: center;
+        color: white;
+    }
+</style>
+
+

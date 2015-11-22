@@ -24,8 +24,15 @@ namespace ServiceLayer.EFServices
 
         public IList<Field> GetAllFields()
         {
-            throw new NotImplementedException();
+            var list = _field.ToList();
+            return list;
         }
+
+        public IList<Field> GetFieldsById(int id)
+        {
+            var list = _field.Where(f => f.FormId == id).ToList();
+            return list;
+        } 
 
         public Field Get(int id)
         {

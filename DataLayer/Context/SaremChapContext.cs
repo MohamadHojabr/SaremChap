@@ -19,15 +19,16 @@ namespace DataLayer.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Value>()
+     modelBuilder.Entity<Value>()
     .HasRequired(d => d.Form)
     .WithMany()
     .HasForeignKey(d => d.FormId)
     .WillCascadeOnDelete(false);
-            modelBuilder.Entity<Form>()
+
+     modelBuilder.Entity<Form>()
     .HasRequired(u => u.Product)
     .WithMany()
-    .HasForeignKey(u => u.ProductId);
+    .HasForeignKey(u => u.Product_ID);
 
 
 

@@ -27,6 +27,13 @@ namespace ServiceLayer.EFServices
             throw new NotImplementedException();
         }
 
+        public IList<Price> GetPricesById(int id)
+        {
+            var list = _price.Where(p => p.ProductId == id).ToList();
+            return list;
+        }
+
+
         public Price Get(int id)
         {
             throw new NotImplementedException();

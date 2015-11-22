@@ -10,6 +10,7 @@ namespace ServiceLayer.Services
     public interface IFieldService
     {
         IList<Field> GetAllFields();
+        IList<Field> GetFieldsById(int id);
         Field Get(int id);
         Field Add(Field field);
         void Remove(int id);

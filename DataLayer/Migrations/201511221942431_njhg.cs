@@ -3,7 +3,7 @@ namespace DataLayer.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class njhg : DbMigration
     {
         public override void Up()
         {
@@ -56,65 +56,65 @@ namespace DataLayer.Migrations
                 "dbo.Forms",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        Fa_Title = c.String(nullable: false),
-                        En_Title = c.String(nullable: false),
-                        Product_ID = c.Int(nullable: false),
+                        FormId = c.Int(nullable: false, identity: true),
+                        ProductId = c.Int(nullable: false),
+                        FaTitle = c.String(),
+                        EnTitle = c.String(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Products", t => t.Product_ID, cascadeDelete: true)
-                .Index(t => t.Product_ID);
+                .PrimaryKey(t => t.FormId)
+                .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
+                .Index(t => t.ProductId);
             
             CreateTable(
                 "dbo.Products",
                 c => new
                     {
-                        ProductID = c.Int(nullable: false, identity: true),
-                        ProductCategoryID = c.Int(nullable: false),
-                        name = c.String(nullable: false),
-                        imege = c.String(nullable: false),
-                        describtion = c.String(nullable: false),
-                        Form_Id = c.Int(),
+                        ProductId = c.Int(nullable: false, identity: true),
+                        ProductCategoryId = c.Int(nullable: false),
+                        Name = c.String(nullable: false),
+                        Imege = c.String(nullable: false),
+                        Describtion = c.String(nullable: false),
+                        Form_FormId = c.Int(),
                     })
-                .PrimaryKey(t => t.ProductID)
-                .ForeignKey("dbo.Forms", t => t.Form_Id)
-                .ForeignKey("dbo.ProductCategories", t => t.ProductCategoryID, cascadeDelete: true)
-                .Index(t => t.Form_Id)
-                .Index(t => t.ProductCategoryID);
+                .PrimaryKey(t => t.ProductId)
+                .ForeignKey("dbo.Forms", t => t.Form_FormId)
+                .ForeignKey("dbo.ProductCategories", t => t.ProductCategoryId, cascadeDelete: true)
+                .Index(t => t.Form_FormId)
+                .Index(t => t.ProductCategoryId);
             
             CreateTable(
                 "dbo.Prices",
                 c => new
                     {
-                        priceID = c.Int(nullable: false, identity: true),
-                        ProductID = c.Int(nullable: false),
-                        neme = c.String(nullable: false),
+                        PriceId = c.Int(nullable: false, identity: true),
+                        ProductId = c.Int(nullable: false),
+                        Neme = c.String(nullable: false),
                         Quantity = c.Int(nullable: false),
-                        value = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Value = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
-                .PrimaryKey(t => t.priceID)
-                .ForeignKey("dbo.Products", t => t.ProductID, cascadeDelete: true)
-                .Index(t => t.ProductID);
+                .PrimaryKey(t => t.PriceId)
+                .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
+                .Index(t => t.ProductId);
             
             CreateTable(
                 "dbo.ProductCategories",
                 c => new
                     {
-                        ProductCategoryID = c.Int(nullable: false, identity: true),
-                        name = c.String(nullable: false),
-                        imege = c.String(nullable: false),
-                        describtion = c.String(nullable: false),
+                        ProductCategoryId = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        Imege = c.String(nullable: false),
+                        Describtion = c.String(nullable: false),
                         SuperCategory = c.Int(),
                     })
-                .PrimaryKey(t => t.ProductCategoryID);
+                .PrimaryKey(t => t.ProductCategoryId);
             
             CreateTable(
                 "dbo.Galleries",
                 c => new
                     {
                         GalleryId = c.Int(nullable: false, identity: true),
-                        name = c.String(nullable: false),
-                        describtion = c.String(),
+                        Name = c.String(nullable: false),
+                        Describtion = c.String(),
                     })
                 .PrimaryKey(t => t.GalleryId);
             
@@ -124,9 +124,9 @@ namespace DataLayer.Migrations
                     {
                         GalleryItemId = c.Int(nullable: false, identity: true),
                         GalleryId = c.Int(nullable: false),
-                        name = c.String(nullable: false),
-                        describtion = c.String(),
-                        url = c.String(nullable: false),
+                        Name = c.String(nullable: false),
+                        Describtion = c.String(),
+                        Url = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.GalleryItemId)
                 .ForeignKey("dbo.Galleries", t => t.GalleryId, cascadeDelete: true)
@@ -136,7 +136,7 @@ namespace DataLayer.Migrations
                 "dbo.Orders",
                 c => new
                     {
-                        OrderID = c.Int(nullable: false, identity: true),
+                        OrderId = c.Int(nullable: false, identity: true),
                         OrderDate = c.DateTime(nullable: false),
                         FirstName = c.String(nullable: false, maxLength: 160),
                         LastName = c.String(nullable: false, maxLength: 160),
@@ -148,7 +148,7 @@ namespace DataLayer.Migrations
                         Total = c.Decimal(nullable: false, precision: 18, scale: 2),
                         SubmitFormId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.OrderID);
+                .PrimaryKey(t => t.OrderId);
             
             CreateTable(
                 "dbo.Values",
@@ -160,38 +160,38 @@ namespace DataLayer.Migrations
                         SubmitId = c.Int(nullable: false),
                         FieldId = c.Int(nullable: false),
                         FormId = c.Int(nullable: false),
-                        Order_OrderID = c.Int(),
+                        Order_OrderId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Fields", t => t.FieldId, cascadeDelete: true)
                 .ForeignKey("dbo.Forms", t => t.FormId)
-                .ForeignKey("dbo.Orders", t => t.Order_OrderID)
+                .ForeignKey("dbo.Orders", t => t.Order_OrderId)
                 .Index(t => t.FieldId)
                 .Index(t => t.FormId)
-                .Index(t => t.Order_OrderID);
+                .Index(t => t.Order_OrderId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Values", "Order_OrderID", "dbo.Orders");
+            DropForeignKey("dbo.Values", "Order_OrderId", "dbo.Orders");
             DropForeignKey("dbo.Values", "FormId", "dbo.Forms");
             DropForeignKey("dbo.Values", "FieldId", "dbo.Fields");
             DropForeignKey("dbo.GalleryItems", "GalleryId", "dbo.Galleries");
-            DropForeignKey("dbo.Forms", "Product_ID", "dbo.Products");
-            DropForeignKey("dbo.Products", "ProductCategoryID", "dbo.ProductCategories");
-            DropForeignKey("dbo.Prices", "ProductID", "dbo.Products");
-            DropForeignKey("dbo.Products", "Form_Id", "dbo.Forms");
+            DropForeignKey("dbo.Forms", "ProductId", "dbo.Products");
+            DropForeignKey("dbo.Products", "ProductCategoryId", "dbo.ProductCategories");
+            DropForeignKey("dbo.Prices", "ProductId", "dbo.Products");
+            DropForeignKey("dbo.Products", "Form_FormId", "dbo.Forms");
             DropForeignKey("dbo.Fields", "FormId", "dbo.Forms");
             DropForeignKey("dbo.Subjects", "ChapterId", "dbo.Chapters");
-            DropIndex("dbo.Values", new[] { "Order_OrderID" });
+            DropIndex("dbo.Values", new[] { "Order_OrderId" });
             DropIndex("dbo.Values", new[] { "FormId" });
             DropIndex("dbo.Values", new[] { "FieldId" });
             DropIndex("dbo.GalleryItems", new[] { "GalleryId" });
-            DropIndex("dbo.Forms", new[] { "Product_ID" });
-            DropIndex("dbo.Products", new[] { "ProductCategoryID" });
-            DropIndex("dbo.Prices", new[] { "ProductID" });
-            DropIndex("dbo.Products", new[] { "Form_Id" });
+            DropIndex("dbo.Forms", new[] { "ProductId" });
+            DropIndex("dbo.Products", new[] { "ProductCategoryId" });
+            DropIndex("dbo.Prices", new[] { "ProductId" });
+            DropIndex("dbo.Products", new[] { "Form_FormId" });
             DropIndex("dbo.Fields", new[] { "FormId" });
             DropIndex("dbo.Subjects", new[] { "ChapterId" });
             DropTable("dbo.Values");

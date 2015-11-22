@@ -36,7 +36,8 @@ namespace ServiceLayer.EFServices
 
         public Product Get(int id)
         {
-            throw new NotImplementedException();
+            var product = _product.Find(id);
+            return product;
         }
 
         public Product Add(Product product)

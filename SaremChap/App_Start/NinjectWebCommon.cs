@@ -72,7 +72,6 @@ namespace SaremChap.App_Start
             kernel.Bind<IChapterService>().To<EfChapterService>().InRequestScope();
             kernel.Bind<IFieldService>().To<EfFieldService>().InRequestScope();
             kernel.Bind<IFormService>().To<EfFormService>().InRequestScope();
-            kernel.Bind<IFormService>().To<EfFormService>().InRequestScope();
             kernel.Bind<IGalleryItemService>().To<EfGalleryItemService>().InRequestScope();
             kernel.Bind<IGalleryService>().To<EfGalleryService>().InRequestScope();
             kernel.Bind<IOrderService>().To<EfOrderService>().InRequestScope();

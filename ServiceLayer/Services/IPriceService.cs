@@ -10,6 +10,7 @@ namespace ServiceLayer.Services
     public interface IPriceService
     {
         IList<Price> GetAllPrices();
+        IList<Price> GetPricesById(int id);
         Price Get(int id);
         Price Add(Price price);
         void Remove(int id);
