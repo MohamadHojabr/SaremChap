@@ -1,0 +1,13 @@
+﻿@model IEnumerable<DomainClasses.Models.Chapter>
+           
+<ul class="dropdown">
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="/Contents/Subjects/?name=@item.Name">
+                @item.Name
+            </a>
+        </li>
+    }
+</ul>
+
