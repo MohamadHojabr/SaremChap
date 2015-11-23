@@ -48,9 +48,13 @@
   <ItemGroup>
     <Compile Include="Context\IUnitOfWork.cs" />
     <Compile Include="Context\SaremChapContext.cs" />
-    <Compile Include="Migrations\201511221942431_njhg.cs" />
-    <Compile Include="Migrations\201511221942431_njhg.Designer.cs">
-      <DependentUpon>201511221942431_njhg.cs</DependentUpon>
+    <Compile Include="Migrations\201511231654256_hj.cs" />
+    <Compile Include="Migrations\201511231654256_hj.Designer.cs">
+      <DependentUpon>201511231654256_hj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511231657527_mk.cs" />
+    <Compile Include="Migrations\201511231657527_mk.Designer.cs">
+      <DependentUpon>201511231657527_mk.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,8 +70,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511221942431_njhg.resx">
-      <DependentUpon>201511221942431_njhg.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511231654256_hj.resx">
+      <DependentUpon>201511231654256_hj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511231657527_mk.resx">
+      <DependentUpon>201511231657527_mk.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

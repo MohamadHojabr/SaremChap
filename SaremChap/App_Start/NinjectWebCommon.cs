@@ -80,6 +80,8 @@ namespace SaremChap.App_Start
             kernel.Bind<IProductService>().To<EfProductService>().InRequestScope();
             kernel.Bind<ISubjectService>().To<EfSubjectService>().InRequestScope();
             kernel.Bind<IValueService>().To<EfValueService>().InRequestScope();
-        }        
+            kernel.Bind<IFileService>().To<EfFileService>().InRequestScope();
+
+        }
     }
 }

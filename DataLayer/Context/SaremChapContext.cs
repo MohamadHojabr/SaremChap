@@ -46,6 +46,7 @@ namespace DataLayer.Context
         public DbSet<ProductCategory> ProductCategories { set; get; }
         public DbSet<Subject> Subjects { set; get; }
         public DbSet<Value> Values { set; get; }
+        public DbSet<File> Files { set; get; }
 
 
         #region IUnitOfWork Members

@@ -42,7 +42,9 @@ namespace ServiceLayer.EFServices
 
         public Product Add(Product product)
         {
-            throw new NotImplementedException();
+            _product.Add(product);
+           
+            return product;
         }
 
         public void Remove(int id)

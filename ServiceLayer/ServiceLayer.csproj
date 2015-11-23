@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="EFServices\EfChapterService.cs" />
     <Compile Include="EFServices\EfFieldService.cs" />
+    <Compile Include="EFServices\EfFileService.cs" />
     <Compile Include="EFServices\EfFormService.cs" />
     <Compile Include="EFServices\EfGalleryItemService.cs" />
     <Compile Include="EFServices\EfGalleryService.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IChapterService.cs" />
     <Compile Include="Services\IFieldService.cs" />
+    <Compile Include="Services\IFileService.cs" />
     <Compile Include="Services\IFormService.cs" />
     <Compile Include="Services\IGalleryItemService.cs" />
     <Compile Include="Services\IGalleryService.cs" />
