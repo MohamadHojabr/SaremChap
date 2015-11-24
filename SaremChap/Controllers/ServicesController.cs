@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -7,6 +8,7 @@ using DataLayer.Context;
 using DomainClasses.Enums;
 using DomainClasses.Models;
 using ServiceLayer.Services;
+using File = DomainClasses.Models.File;
 
 namespace SaremChap.Controllers
 {
@@ -15,6 +17,15 @@ namespace SaremChap.Controllers
         private IUnitOfWork _uow;
         private IProductCategoryService _productCategoryService;
         private IProductService _productService;
+
+        private string fullName
+        {
+            get
+            {
+                string serverpath = "/Images/Services/";
+                return serverpath;
+            }
+        }
         public ServicesController(IUnitOfWork uow, IProductCategoryService productCategoryService, IProductService productService)
         {
             _uow = uow;
@@ -68,6 +79,22 @@ namespace SaremChap.Controllers
             }
             _productService.Add(product);
             _uow.SaveChanges();
+
+            var originalDirectory = new DirectoryInfo(string.Format("{0}Images\\Services", Server.MapPath(@"\")));
+
+            string pathString = System.IO.Path.Combine(originalDirectory.ToString(), "service");
+
+            var fileName1 = Path.GetFileName(upload.FileName);
+
+            bool isExists = System.IO.Directory.Exists(pathString);
+
+            if (!isExists)
+                System.IO.Directory.CreateDirectory(pathString);
+
+            var path = string.Format("{0}\\{1}", pathString, upload.FileName);
+            upload.SaveAs(path);
+
+
             ViewBag.ProductCategoryID = new SelectList(_productCategoryService.GetAllProductCategorys(), "ProductCategoryID", "name");
 
             return View();

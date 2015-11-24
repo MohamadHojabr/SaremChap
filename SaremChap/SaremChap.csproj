@@ -142,7 +142,7 @@
     <Folder Include="Content\assets\Admin\css\" />
     <Folder Include="Content\assets\Admin\image\" />
     <Folder Include="Content\assets\Admin\js\" />
-    <Folder Include="images\" />
+    <Folder Include="Images\Services\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
