@@ -29,7 +29,7 @@ namespace DomainClasses.Models
         [AllowHtml]
         public string Describtion { get; set; }
         public virtual ICollection<Price> Price { get; set; }
-        public virtual ICollection<File> File { get; set; } 
+        public virtual ICollection<Files> Files { get; set; } 
         public virtual Form Form { get; set; }
 
         [ForeignKey("ProductCategoryId")]

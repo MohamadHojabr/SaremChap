@@ -8,7 +8,7 @@ using DomainClasses.Enums;
 
 namespace DomainClasses.Models
 {
-    public class File
+    public class Files
     {
         [Key]
         public int FileId { get; set; }

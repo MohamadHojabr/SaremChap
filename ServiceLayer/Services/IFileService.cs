@@ -10,11 +10,11 @@ namespace ServiceLayer.Services
 {
     public interface IFileService
     {
-        IList<File> GetAllFiles();
-        File Get(int id);
-        File GetByIdAndType(int id, Enum type);
-        File Add(File file);
-        File Remove(int id);
-        File Detail(int id);
+        IList<Files> GetAllFiles();
+        Files Get(int id);
+        Files GetByIdAndType(int id, Enum type);
+        Files Add(Files file);
+        Files Remove(int id);
+        Files Detail(int id);
     }
 }

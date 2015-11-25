@@ -606,6 +606,7 @@
     <Content Include="Views\Contents\Partials\PartialLatesSubjects.cshtml" />
     <Content Include="Views\Orders\Form.cshtml" />
     <Content Include="Views\Services\Create.cshtml" />
+    <Content Include="Views\Services\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

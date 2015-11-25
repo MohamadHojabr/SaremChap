@@ -8,7 +8,7 @@ using DataLayer.Context;
 using DomainClasses.Enums;
 using DomainClasses.Models;
 using ServiceLayer.Services;
-using File = DomainClasses.Models.File;
+using File = DomainClasses.Models.Files;
 
 namespace SaremChap.Controllers
 {
@@ -18,14 +18,49 @@ namespace SaremChap.Controllers
         private IProductCategoryService _productCategoryService;
         private IProductService _productService;
 
-        private string fullName
+        private string Directory
         {
             get
             {
-                string serverpath = "/Images/Services/";
-                return serverpath;
+                var originalDirectory = new DirectoryInfo(string.Format("{0}Images\\Services", Server.MapPath(@"\"))).ToString();
+                return originalDirectory;
             }
         }
+
+        private string Path
+        {
+            get
+            {
+                string pathString = System.IO.Path.Combine(Directory, "service");
+                return pathString;
+            }
+        }
+
+        private bool PathIsExists
+        {
+            get
+            {
+                if (System.IO.Directory.Exists(Path)) return true;
+                return false;
+            }
+        }
+
+        private void CreatePath()
+        {
+            if (!PathIsExists)
+            {
+                System.IO.Directory.CreateDirectory(Path);
+            }
+            else
+            {
+                //todo
+            }
+                
+        }
+
+            
+
+
         public ServicesController(IUnitOfWork uow, IProductCategoryService productCategoryService, IProductService productService)
         {
             _uow = uow;
@@ -67,37 +102,36 @@ namespace SaremChap.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Product product, HttpPostedFileBase upload)
         {
+
+
             if (upload != null && upload.ContentLength > 0)
             {
                 var photo = new File
                 {
-                    FileName = System.IO.Path.GetFileName(upload.FileName),
+                    FileName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(upload.FileName),
                     FileType = FileType.Photo
                 };
-                product.File = new List<File>();
-                product.File.Add(photo);
+                product.Files = new List<File>();
+                product.Files.Add(photo);
+                CreatePath();
+                var path = string.Format("{0}\\{1}", Path, photo.FileName);
+                upload.SaveAs(path);
+
             }
             _productService.Add(product);
             _uow.SaveChanges();
 
-            var originalDirectory = new DirectoryInfo(string.Format("{0}Images\\Services", Server.MapPath(@"\")));
-
-            string pathString = System.IO.Path.Combine(originalDirectory.ToString(), "service");
-
-            var fileName1 = Path.GetFileName(upload.FileName);
-
-            bool isExists = System.IO.Directory.Exists(pathString);
-
-            if (!isExists)
-                System.IO.Directory.CreateDirectory(pathString);
-
-            var path = string.Format("{0}\\{1}", pathString, upload.FileName);
-            upload.SaveAs(path);
 
 
             ViewBag.ProductCategoryID = new SelectList(_productCategoryService.GetAllProductCategorys(), "ProductCategoryID", "name");
 
             return View();
+        }
+
+        public ActionResult Detail(int id)
+        {
+            var service = _productService.Get(id);
+            return View(service);
         }
 
 	}
