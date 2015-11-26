@@ -11,7 +11,7 @@ namespace ServiceLayer.Services
     {
         IList<Product> GetAllProducts();
         Product GetProductByNameAndId(string name, int id);
-        Product Get(int id);
+        Product Get(int? id);
         Product Add(Product product);
         void Remove(int id);
         bool Update(Product product);

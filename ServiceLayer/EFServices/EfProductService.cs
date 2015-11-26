@@ -34,7 +34,7 @@ namespace ServiceLayer.EFServices
             return product;
         } 
 
-        public Product Get(int id)
+        public Product Get(int? id)
         {
             var product = _product.Include(p => p.Files).SingleOrDefault(p => p.ProductId == id);
             return product;

@@ -437,6 +437,7 @@
     <Content Include="Content\assets\Common\font-awesome\css\font-awesome.css" />
     <Content Include="Content\assets\Common\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\assets\Common\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\assets\Common\Images\image-not-found.jpg" />
     <Content Include="Content\assets\Common\jquery.validetta\css\validetta.css" />
     <Content Include="Content\assets\Common\jquery.validetta\css\validetta.min.css" />
     <Content Include="Content\assets\Common\jquery.validetta\js\validetta.js" />
@@ -607,6 +608,7 @@
     <Content Include="Views\Orders\Form.cshtml" />
     <Content Include="Views\Services\Create.cshtml" />
     <Content Include="Views\Services\Detail.cshtml" />
+    <Content Include="Views\Services\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
