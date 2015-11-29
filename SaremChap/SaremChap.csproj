@@ -609,6 +609,7 @@
     <Content Include="Views\Services\Create.cshtml" />
     <Content Include="Views\Services\Detail.cshtml" />
     <Content Include="Views\Services\Edit.cshtml" />
+    <Content Include="Views\Services\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

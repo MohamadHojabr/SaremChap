@@ -75,7 +75,7 @@ namespace SaremChap.Controllers
             return PartialView("Partials/ProductCategoryInMenu", productCategories);
         }
 
-        public ActionResult Index(string name)
+        public ActionResult Index()
         {
             var list = _productCategoryService.GetAllProductCategorys();
             return View(list);
@@ -103,8 +103,6 @@ namespace SaremChap.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Product product, HttpPostedFileBase upload)
         {
-
-
             if (upload != null && upload.ContentLength > 0)
             {
                 var photo = new File
@@ -117,15 +115,10 @@ namespace SaremChap.Controllers
                 CreatePath();
                 var path = string.Format("{0}\\{1}", Path, photo.FileName);
                 upload.SaveAs(path);
-
             }
             _productService.Add(product);
             _uow.SaveChanges();
-
-
-
             ViewBag.ProductCategoryID = new SelectList(_productCategoryService.GetAllProductCategorys(), "ProductCategoryID", "name");
-
             return View();
         }
 
@@ -141,7 +134,7 @@ namespace SaremChap.Controllers
                 return HttpNotFound();
             }
 
-            ViewBag.ProductCategoryID = new SelectList(_productCategoryService.GetAllProductCategorys(), "ProductCategoryID", "name");
+            ViewBag.ProductCategoryID = new SelectList(_productCategoryService.GetAllProductCategorys(), "ProductCategoryID", "name",product.ProductCategoryId);
             return View(product);
         }
 
@@ -155,6 +148,7 @@ namespace SaremChap.Controllers
             if (ModelState.IsValid)
             {
                 _productService.Update(product);
+                
                 _uow.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -168,5 +162,33 @@ namespace SaremChap.Controllers
             return View(service);
         }
 
-	}
+        public ActionResult Delete(int? id)
+        {
+            Product product = _productService.Get(id);
+
+            if (product == null)
+            {
+                //todo
+            }
+            return View(product);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                _productService.Remove(id);
+
+                _uow.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("Delete", new {id = id});
+            }
+
+            return RedirectToAction("index");
+        }
+    }
 }

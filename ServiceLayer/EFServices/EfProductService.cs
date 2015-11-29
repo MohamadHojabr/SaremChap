@@ -49,7 +49,8 @@ namespace ServiceLayer.EFServices
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            Product product = _product.Find(id);
+            _product.Remove(product);
         }
 
         public bool Update(Product product)
