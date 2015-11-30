@@ -27,7 +27,17 @@ namespace SaremChap
                 "~/Content/assets/Common/owl-carousel/owl.carousel.min.js",
                 "~/Scripts/respond.js"));
             bundles.Add(new ScriptBundle("~/bundles/Admin/js").Include(
-                
+                                "~/Content/assets/Front/js/script.js",
+                "~/Content/assets/Front/js/jquery.appear.js",
+                "~/Content/assets/Front/js/jquery.fitvids.js",
+                "~/Content/assets/Front/js/jquery.isotope.min.js",
+                "~/Content/assets/Front/js/jquery.lettering.js",
+                "~/Content/assets/Front/js/jquery.migrate.js",
+                "~/Content/assets/Front/js/jquery.nicescroll.min.js",
+                "~/Content/assets/Front/js/jquery.parallax.js",
+                "~/Content/assets/Front/js/jquery.textillate.js",
+                "~/Content/assets/Front/js/nivo-lightbox.min.js"
+
                 ));
             bundles.Add(new ScriptBundle("~/bundles/Front/js").Include(
                 "~/Content/assets/Front/js/script.js",
@@ -62,9 +72,11 @@ namespace SaremChap
                 ));
 
             bundles.Add(new StyleBundle("~/Content/Admin/css").Include(
-                
+ "~/Content/assets/Front/css/colors/purple.css",
+                "~/Content/assets/Front/css/hover-min.css")
+                .Include("~/Content/assets/Front/css/style.css",
+                new CssRewriteUrlTransform()
                 ));
-
             bundles.Add(new StyleBundle("~/Content/Front/css").Include(
                 "~/Content/assets/Front/css/colors/purple.css",
                 "~/Content/assets/Front/css/hover-min.css")

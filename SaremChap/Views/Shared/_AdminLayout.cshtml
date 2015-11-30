@@ -12,34 +12,662 @@
     @Scripts.Render("~/bundles/Admin/js")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application NPOOOT name", "Index", "Home", null, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-                </ul>
+    <!-- Start Header Section -->
+    <div class="hidden-header"></div>
+    <header class="clearfix">
+
+        <!-- Start Top Bar -->
+        <div class="top-bar color-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        @*@Html.Partial("_LoginPartial")*@
+
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <!-- Start Social Links -->
+                        <ul class="social-list">
+                            <li>
+                                <a class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a class="google itl-tooltip" data-placement="bottom" title="Google Plus" href="#"><i class="fa fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a class="dribbble itl-tooltip" data-placement="bottom" title="Dribble" href="#"><i class="fa fa-dribbble"></i></a>
+                            </li>
+                            <li>
+                                <a class="linkdin itl-tooltip" data-placement="bottom" title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a class="flickr itl-tooltip" data-placement="bottom" title="Flickr" href="#"><i class="fa fa-flickr"></i></a>
+                            </li>
+                            <li>
+                                <a class="tumblr itl-tooltip" data-placement="bottom" title="Tumblr" href="#"><i class="fa fa-tumblr"></i></a>
+                            </li>
+                            <li>
+                                <a class="instgram itl-tooltip" data-placement="bottom" title="Instagram" href="#"><i class="fa fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a class="vimeo itl-tooltip" data-placement="bottom" title="vimeo" href="#"><i class="fa fa-vimeo-square"></i></a>
+                            </li>
+                            <li>
+                                <a class="skype itl-tooltip" data-placement="bottom" title="Skype" href="#"><i class="fa fa-skype"></i></a>
+                            </li>
+                        </ul>
+                        <!-- End Social Links -->
+                    </div><!-- .col-md-6 -->
+                    <div class="col-md-6">
+                        <!-- Start Contact Info -->
+                        <ul class="contact-details">
+                            <li>
+                                <a href="#"><i class="fa fa-map-marker"></i> خیابان سمیه, تهران </a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-envelope-o"></i> info@saremchap.ir</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-phone"></i> 021-88866907</a>
+                            </li>
+                        </ul>
+                        <!-- End Contact Info -->
+                    </div><!-- .col-md-6 -->
+                </div><!-- .row -->
+            </div><!-- .container -->
+        </div><!-- .top-bar -->
+        <!-- End Top Bar -->
+        <!-- Start  Logo & Naviagtion  -->
+        <div class="navbar navbar-default navbar-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- Stat Toggle Nav Link For Mobiles -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <!-- End Toggle Nav Link For Mobiles -->
+                    <a class="navbar-brand" href="index.html">
+                        <img alt="" src="/Content/images/margo.png">
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <!-- Stat Search -->
+                    <div class="search-side">
+                        <a href="#" class="show-search"><i class="fa fa-search"></i></a>
+                        <div class="search-form">
+                            <form autocomplete="off" role="search" method="get" class="searchform" action="#">
+                                <input type="text" value="" name="s" id="s" placeholder="Search the site...">
+                            </form>
+                        </div>
+                    </div>
+                    <!-- End Search -->
+                    <!-- Start Navigation List -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/home/Contact">ارتباط با ما</a>
+                            <!--<ul class="dropdown">
+                                <li>
+                                    <a class="active" href="index.html">Home Main Version</a>
+                                </li>
+
+                            </ul>-->
+                        </li>
+                        <li>
+                            <a href="/home/About">درباره ما </a>
+                            <!--<ul class="dropdown">
+                                <li>
+                                    <a href="about.html">About</a>
+                                </li>
+                                <li>
+                                    <a href="services.html">Services</a>
+                                </li>
+                                <li>
+                                    <a href="right-sidebar.html">Right Sidebar</a>
+                                </li>
+                                <li>
+                                    <a href="left-sidebar.html">Left Sidebar</a>
+                                </li>
+                                <li>
+                                    <a href="404.html">404 Page</a>
+                                </li>
+                            </ul>-->
+                        </li>
+                        <li>
+                            <a href="#">راهنمای خرید</a>
+                            <ul class="dropdown">
+                                <li>
+                                    <a href="/Home/Accountnumber">شماره حساب</a>
+                                </li>
+                                <li>
+                                    <a href="#">نحوه ثبت سفارش</a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Rules">قوانین ارجاع و تعویض</a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Privacy">حفظ حریم شخصی</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/home/selectgallery/1">گالری</a>
+                            @{Html.RenderAction("GalleryInMenu", "Home", null);}
+
+
+                        </li>
+                        <li>
+                            <a href="#">مطالب</a>
+                            @{Html.RenderAction("ChapterInMenu", "Contents", null);}
+
+                        </li>
+                        <li>
+                            <a href="#">خدمات</a>
+                            <ul class="dropdown">
+                                <li class="productMenu">
+                                    <h4>  لیست کامل خدمات و محصولات چاپ صارم    <i class="fa fa-cog"></i></h4>
+
+                                    <div class="row" style="width:880px">
+
+                                        @{Html.RenderAction("ProductCategoryInMenu", "Services", null);}
+
+
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/">صفحه نخست</a>
+                        </li>
+                    </ul>
+                    <!-- End Navigation List -->
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        <!-- End Header Logo & Naviagtion -->
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    </header>
+
+    <!-- Start Page Banner -->
+    @*<div class="init-page"></div>*@
+    @*<div class="page-banner" style="padding:40px 0; background: url(../Content/images/slide-02-bg.jpg) center #f9f9f9;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="breadcrumbs" style="width:100%; text-align:right">
+                            <li>ارتباط با ما</li>
+                            <li><a href="/">صفحه اصلی</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6" style="text-align:right">
+                        <h2>ارتباط با ما</h2>
+                        <p>مرکز چاپ نوین</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>*@
+    <!-- End Page Banner -->
+
+    <div class="">
+        <!-- Start Content -->
+        <div id="content">
+            <div class="container">
+                <div class="row sidebar-page">
+
+
+                    <!-- Page Content -->
+                    <div class="col-md-9 page-content">
+
+                        <!-- Classic Heading -->
+                        <h4 class="classic-title"><span>@RenderSection("SideBar", required: false)</span></h4>
+
+
+                        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="margin-top:100px">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-gears"></i></h4>
+                                    </div>
+                                    <div id="sectionContents"></div>
+                                </div>
+                            </div>
+                        </div>
+                        @RenderBody()
+
+                        <!-- Divider -->
+                        <div class="hr5" style="margin-top:30px; margin-bottom:45px;"></div>
+
+
+
+                    </div>
+                    <!-- End Page Content-->
+                    <!--Sidebar-->
+                    <div class="col-md-3 sidebar right-sidebar">
+
+                        <!-- Search Widget -->
+                        @*<div class="widget widget-search">
+                                <form action="#">
+                                    <input type="search" placeholder="Enter Keywords..." />
+                                    <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>*@
+
+                        <!-- Accordion -->
+                        <div class="panel-group" id="accordion">
+
+                            <!-- Start Accordion 1 -->
+                            <div class="panel panel-default">
+                                <!-- Toggle Heading -->
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-4" class=" text-right">
+                                            <i class="fa fa-angle-up control-icon"></i>
+                                            <i class="fa fa-cubes"></i> محصولات
+                                        </a>
+                                    </h4>
+                                </div>
+                                <!-- Toggle Content -->
+                                <div id="collapse-4" class="panel-collapse">
+                                    <div class="panel-body">
+                                        <div class="widget widget-categories">
+
+                                            <ul>
+                                                <li>
+                                                    <a href="/panel/ProductCategory">گروه محصولات</a>
+
+                                                </li>
+                                                <li>
+                                                    <a href="/panel/Product">محصولات</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Accordion 3 -->
+                            <!-- Start Accordion 2 -->
+                            <div class="panel panel-default">
+                                <!-- Toggle Heading -->
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-5" class="collapsed text-right">
+                                            <i class="fa fa-angle-up control-icon"></i>
+                                            <i class="fa fa-tasks"></i> ویژگی محصولات
+                                        </a>
+                                    </h4>
+                                </div>
+                                <!-- Toggle Content -->
+                                <div id="collapse-5" class="panel-collapse collapse">
+                                    <div class="widget widget-categories">
+                                        <ul>
+                                            <li>
+                                                <a href="/panel/Prices/">قیمت ها</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">ویژگی های دیگر</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Accordion 3 -->
+                            <!-- Start Accordion 2 -->
+                            <div class="panel panel-default">
+                                <!-- Toggle Heading -->
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-8" class="collapsed text-right">
+                                            <i class="fa fa-angle-up control-icon"></i>
+                                            <i class="fa fa-shopping-cart"></i> سفارشات
+                                        </a>
+                                    </h4>
+                                </div>
+                                <!-- Toggle Content -->
+                                <div id="collapse-8" class="panel-collapse collapse">
+                                    <div class="widget widget-categories">
+                                        <ul>
+                                            <li>
+                                                <a href="/FormGenerate/ShowForm/OrderList">لیست سفارشات</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Accordion 3 -->
+                            <!-- Start Accordion 2 -->
+                            <div class="panel panel-default">
+                                <!-- Toggle Heading -->
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-6" class="collapsed text-right">
+                                            <i class="fa fa-angle-up control-icon"></i>
+                                            <i class="fa fa-list-alt"></i> فرم ساز
+                                        </a>
+                                    </h4>
+                                </div>
+                                <!-- Toggle Content -->
+                                <div id="collapse-6" class="panel-collapse collapse">
+                                    <div class="widget widget-categories">
+                                        <ul>
+                                            <li>
+                                                <a href="/FormGenerate/Form/">فرم</a>
+                                            </li>
+                                            @*<li>
+                                                    <a href="/FormGenerate/Field/">فیلد</a>
+                                                </li>*@
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Accordion 3 -->
+                            <!-- Start Accordion 3 -->
+                            <div class="panel panel-default">
+                                <!-- Toggle Heading -->
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-7" class="collapsed text-right">
+                                            <i class="fa fa-angle-up control-icon"></i>
+                                            <i class="fa fa-book"></i> محتوا
+                                        </a>
+                                    </h4>
+                                </div>
+                                <!-- Toggle Content -->
+                                <div id="collapse-7" class="panel-collapse collapse">
+                                    <div class="widget widget-categories">
+
+                                        <ul>
+                                            <li>
+                                                <a href="/panel/chapter/">گروه مطالب</a>
+                                            </li>
+                                            <li>
+                                                <a href="/panel/subject/">مطالب</a>
+                                            </li>
+                                            <li>
+                                                <a href="/panel/Gallery/">گروه گالری تصاویر </a>
+                                            </li>
+                                            <li>
+                                                <a href="/panel/Galleryitem/">تصاویر گالری </a>
+                                            </li>
+                                            <li>
+                                                <a href="/home/uploadManager">مدیریت تصاویر </a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Accordion 3 -->
+                            <!-- Start Accordion 3 -->
+                            <div class="panel panel-default">
+                                <!-- Toggle Heading -->
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-10" class="collapsed text-right">
+                                            <i class="fa fa-angle-up control-icon"></i>
+                                            <i class="fa fa-user"></i> مدیریت کاربر
+                                        </a>
+                                    </h4>
+                                </div>
+                                <!-- Toggle Content -->
+                                <div id="collapse-10" class="panel-collapse collapse">
+                                    <div class="widget widget-categories">
+
+                                        <ul>
+                                            <li>
+                                                <a href="/Account/Manage">تغییر رمز عبور</a>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Accordion 3 -->
+
+                        </div>
+                        <!-- End Accordion -->
+                        <!-- Categories Widget -->
+                        @*<div class="widget widget-categories">
+                                <h4>Categories <span class="head-line"></span></h4>
+                                <ul>
+                                    <li>
+                                        <a href="#">Brandign</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Design</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Development</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Graphic</a>
+                                    </li>
+                                </ul>
+                            </div>*@
+
+                    </div>
+                    <!--End sidebar-->
+
+
+                </div>
+            </div>
+        </div>
+        <!-- End Content -->
+
+    </div>
+    <!-- Start Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="row footer-widgets">
+
+
+                <!-- Start Subscribe & Social Links Widget -->
+                <div class="col-md-3 col-xs-12">
+                    <div class="footer-widget mail-subscribe-widget">
+                        <h4>ایمیل خو را ثبت کنید<span class="head-line"></span></h4>
+                        <!--<p>Join our mailing list to stay up to date and get notices about our new releases!</p>-->
+
+                        <form class="subscribe">
+                            <input type="text" placeholder="mail@example.com">
+                            <br />
+                            <input type="submit" class="btn-system" value="ارسال">
+                        </form>
+                    </div>
+
+                </div><!-- .col-md-3 -->
+                <!-- End Subscribe & Social Links Widget -->
+                <!-- Start Twitter Widget -->
+                <div class="col-md-3 col-xs-12">
+                    <div class="footer-widget social-widget">
+                        <h4 style="text-align:right">ما را دنبال کنید<span class="head-line"></span></h4>
+                        <ul class="social-icons">
+                            <li>
+                                <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a class="google" href="#"><i class="fa fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a>
+                            </li>
+                            <li>
+                                <a class="linkdin" href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a class="flickr" href="#"><i class="fa fa-flickr"></i></a>
+                            </li>
+                            <li>
+                                <a class="tumblr" href="#"><i class="fa fa-tumblr"></i></a>
+                            </li>
+                            <li>
+                                <a class="instgram" href="#"><i class="fa fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a class="vimeo" href="#"><i class="fa fa-vimeo-square"></i></a>
+                            </li>
+                            <li>
+                                <a class="skype" href="#"><i class="fa fa-skype"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!-- .col-md-3 -->
+                <!-- End Twitter Widget -->
+                <!-- Start Flickr Widget -->
+                <div class="col-md-3 col-xs-12">
+                    <div class="footer-widget flickr-widget">
+                        <h4>چاپ صارم<span class="head-line"></span></h4>
+                        <ul class="flickr-list">
+                            <li>
+                                <a href="../Content/images/flickr-01.jpg" class="lightbox">
+                                    <img alt="" src="../Content/images/flickr-01.jpg">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../Content/images/flickr-02.jpg" class="lightbox">
+                                    <img alt="" src="../Content/images/flickr-02.jpg">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../Content/images/flickr-03.jpg" class="lightbox">
+                                    <img alt="" src="../Content/images/flickr-03.jpg">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../Content/images/flickr-04.jpg" class="lightbox">
+                                    <img alt="" src="../Content/images/flickr-04.jpg">
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div><!-- .col-md-3 -->
+                <!-- End Flickr Widget -->
+                <!-- Start Contact Widget -->
+                <div class="col-md-3 col-xs-12">
+                    <div class="footer-widget contact-widget" style="direction:rtl">
+                        <h4><img src="../Content/images/footer-margo.png" class="img-responsive" alt="Footer Logo" /></h4>
+                        <ul>
+                            <li><span>آدرس :</span> تهران، خیابان سمیه، خیابان خاقانی، پلاک 75، واحد 3</li>
+                            <li><span>تلفن :</span> 021-88866907 </li>
+                            <li><span>ایمیل:</span> info@saremchap.ir</li>
+                            <li><span>وب سایت:</span> www.saremchap.ir</li>
+                        </ul>
+                    </div>
+                </div><!-- .col-md-3 -->
+                <!-- End Contact Widget -->
+
+            </div><!-- .row -->
+            <!-- Start Copyright -->
+            <div class="copyright-section">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; 2015 تمامی حقوق این سایت متعلق به چاپ صارم می باشد </p>
+                    </div><!-- .col-md-6 -->
+                    <div class="col-md-6">
+                        <ul class="footer-nav">
+                            <li>
+                                <a href="#">نقشه سایت</a>
+                            </li>
+                            <li>
+                                <a href="#">قوانین</a>
+                            </li>
+                            <li>
+                                <a href="#">ارتباط با ما</a>
+                            </li>
+                        </ul>
+                    </div><!-- .col-md-6 -->
+                </div><!-- .row -->
+            </div>
+            <!-- End Copyright -->
+        </div>
+    </footer>
+    <!-- End Footer Section -->
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<div id="waitImage" class="waitImage">
+    <div class="waitImage-background"> </div>
+    <img src="~/Content/images/icon/preload.gif" />
+    <p>در حال تبادل اطلاعات ....</p>
+</div>
+
+<script>
+
+    $(document).ajaxStart(function () {
+        $("#waitImage").show();
+    }).ajaxStop(function () {
+        $("#waitImage").fadeOut(function () {
+            $(this).hide()
+        });
+    });
+
+
+    $(".modifyBTN").click(function (e) {
+        var urlParam = $(this).data('url');
+        var Param = $(this).data('param');
+
+        $.ajax({
+
+            //مشخص کردن  اکشنی که باید فراخوانی شود
+
+            url: urlParam + '/' + Param,
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            //نوع نتیجه بازگشتی
+            dataType: 'html'
+
+        })
+.success(function (result) {
+    //زمانی که کدهای سمت سرور بدون خطا اجرا شده اند
+    //این قسمت فراخوانی می‌شود و نتیجه اکشن درون متغیر
+    //result
+    //قرار می‌گیرد
+    $('#sectionContents').html(result);
+})
+.error(function (xhr, status) {
+    alert(xhr.responseText);
+});
+    });
+
+
+
+    $(".jq-btn").click(function (e) {
+        var urlParam = $(this).data('url');
+
+        $.ajax({
+
+            //مشخص کردن  اکشنی که باید فراخوانی شود
+
+            url: urlParam,
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            //نوع نتیجه بازگشتی
+            dataType: 'html'
+
+        })
+.success(function (result) {
+    //زمانی که کدهای سمت سرور بدون خطا اجرا شده اند
+    //این قسمت فراخوانی می‌شود و نتیجه اکشن درون متغیر
+    //result
+    //قرار می‌گیرد
+    $('#sectionContents').html(result);
+})
+.error(function (xhr, status) {
+    alert(xhr.responseText);
+});
+    });
+</script>
