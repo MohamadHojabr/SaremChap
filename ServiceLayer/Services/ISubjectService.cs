@@ -15,7 +15,7 @@ namespace ServiceLayer.Services
         Subject Get(int id);
         Subject Add(Subject subject);
         void Remove(int id);
-        bool Update(Subject subject);
+        void Update(Subject subject);
 
     }
 }

@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Entity.Migrations;
 using DataLayer.Context;
 using DomainClasses.Models;
 using ServiceLayer.Services;
@@ -13,8 +12,8 @@ namespace ServiceLayer.EFServices
     public class EfProductService : IProductService
     {
 
-        IUnitOfWork _uow;
-        IDbSet<Product> _product;
+        private IUnitOfWork _uow;
+        private IDbSet<Product> _product;
         public EfProductService(IUnitOfWork uow)
         {
             _uow = uow;
@@ -53,9 +52,9 @@ namespace ServiceLayer.EFServices
             _product.Remove(product);
         }
 
-        public bool Update(Product product)
+        public void Update(Product product)
         {
-            throw new NotImplementedException();
+            _product.AddOrUpdate(product);
         }
     }
 }

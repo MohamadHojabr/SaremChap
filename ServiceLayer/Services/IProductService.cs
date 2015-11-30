@@ -14,7 +14,7 @@ namespace ServiceLayer.Services
         Product Get(int? id);
         Product Add(Product product);
         void Remove(int id);
-        bool Update(Product product);
+        void Update(Product product);
 
     }
 }

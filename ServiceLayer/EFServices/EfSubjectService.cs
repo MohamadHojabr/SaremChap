@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,12 +53,13 @@ namespace ServiceLayer.EFServices
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            Subject subject = _subject.Find(id);
+            _subject.Remove(subject);
         }
 
-        public bool Update(Subject subject)
+        public void Update(Subject subject)
         {
-            throw new NotImplementedException();
+            _subject.AddOrUpdate(subject);
         }
     }
 }
