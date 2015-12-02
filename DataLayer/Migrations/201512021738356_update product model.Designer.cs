@@ -6,14 +6,14 @@ namespace DataLayer.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.0.0-20911")]
-    public sealed partial class mk : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class updateproductmodel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(mk));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(updateproductmodel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201511231657527_mk"; }
+            get { return "201512021738356_update product model"; }
         }
         
         string IMigrationMetadata.Source

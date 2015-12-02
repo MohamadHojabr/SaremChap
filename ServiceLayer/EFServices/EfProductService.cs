@@ -23,7 +23,8 @@ namespace ServiceLayer.EFServices
 
         public IList<Product> GetAllProducts()
         {
-            throw new NotImplementedException();
+            var products = _product.Include(p => p.ProductCategory).ToList();
+            return products;
         }
 
         public Product GetProductByNameAndId(string name , int id)

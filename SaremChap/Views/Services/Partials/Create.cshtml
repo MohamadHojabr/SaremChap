@@ -1,0 +1,97 @@
+﻿@model DomainClasses.Models.Product
+
+<br/>
+
+@using (Html.BeginForm("Create", "Services", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-vertical container text-right">
+
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <div class="col-md-8">
+                @Html.DropDownList("ProductCategoryID", String.Empty)
+                @Html.ValidationMessageFor(model => model.ProductCategoryId)
+            </div>
+            @Html.LabelFor(model => model.ProductCategory, htmlAttributes: new { @class = "control-label col-md-4" })
+        </div>
+        <br/>
+        <div class="form-group">
+            <div class="col-md-8">
+                @Html.TextBoxFor(model => model.Name, new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4" })
+
+
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-8">
+                <input type="file" id="Photo" name="upload" class="file-upload"/>
+            </div>
+            <label class="control-label col-md-4">تصویر</label>
+
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Describtion, htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.Describtion, new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Describtion)
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="submit" value="      ایجاد      " class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+
+    $(document).ready(function () {
+        $("form").validetta();
+    });
+    $('input').attr('data-validetta', 'required');
+    $('textarea').attr('data-validetta', 'required');
+    $('select').attr('data-validetta', 'required');
+    $("select").addClass("form-control");
+
+    $("#preview-image").click(function () {
+        $("#imagelist").fadeToggle();
+    });
+
+
+
+
+    $(".upload-btn").click(function (e) {
+        var urlParam = $(this).data('url');
+
+        $.ajax({
+            //مشخص کردن  اکشنی که باید فراخوانی شود
+            url: urlParam,
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            //نوع نتیجه بازگشتی
+            dataType: 'html'
+        })
+.success(function (result) {
+    //زمانی که کدهای سمت سرور بدون خطا اجرا شده اند
+    //این قسمت فراخوانی می‌شود و نتیجه اکشن درون متغیر
+    //result
+    //قرار می‌گیرد
+    $('#uploadSection').html(result);
+})
+.error(function (xhr, status) {
+    alert(xhr.responseText);
+});
+    });
+
+</script>
+
+
+

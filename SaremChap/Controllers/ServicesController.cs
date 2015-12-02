@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using DataLayer.Context;
 using DomainClasses.Enums;
 using DomainClasses.Models;
+using PagedList;
 using ServiceLayer.Services;
 using File = DomainClasses.Models.Files;
 
@@ -75,10 +76,19 @@ namespace SaremChap.Controllers
             return PartialView("Partials/ProductCategoryInMenu", productCategories);
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var list = _productCategoryService.GetAllProductCategorys();
-            return View(list);
+            var list = _productService.GetAllProducts();
+            if (Request.HttpMethod != "GET")
+            {
+                page = 1;
+            }
+
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+
+            return View(list.ToPagedList(pageNumber, pageSize));
+
         }
 
         public ActionResult Service(string name)
@@ -97,7 +107,7 @@ namespace SaremChap.Controllers
         {
             ViewBag.ProductCategoryID = new SelectList(_productCategoryService.GetAllProductCategorys(), "ProductCategoryID", "name");
 
-            return View();
+            return PartialView("Partials/Create");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

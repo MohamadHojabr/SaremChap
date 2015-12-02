@@ -1,12 +1,5 @@
 ﻿@model DomainClasses.Models.Product
 
-@{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
-}
-
-<h2>Create</h2>
-
 
 @using (Html.BeginForm("Create", "Services", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -33,13 +26,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Imege, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Imege)
-                @Html.ValidationMessageFor(model => model.Imege)
-            </div>
-        </div>
-        <div class="form-group">
             @Html.Label("Photo", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" id="Photo" name="upload" />
@@ -61,10 +47,3 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

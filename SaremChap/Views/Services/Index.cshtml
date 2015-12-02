@@ -1,8 +1,76 @@
-﻿
+﻿@model PagedList.IPagedList<DomainClasses.Models.Product>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_FrontLayout.cshtml";
+    ViewBag.Title = "لیست محصولات و خدمات";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+@section Sidebar{
+    محصولات
+}
+
+<p>
+    <a class="jq-btn" data-url="/services/Create" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">ایجاد محصول جدید</a>
+</p>
+<table class="table table-bordered" style="direction:rtl">
+    <tr>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.First().ProductCategory.Name)
+        </th>
+
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.First().Name)
+        </th>
+        <th style="text-align: center">
+
+        </th>
+        <th style="text-align: center">
+            @Html.DisplayNameFor(model => model.First().Describtion)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="text-align:center">
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductCategory.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <img src="" class="img-thumbnail" width="100" />
+            </td>
+            <td>
+                @{
+        var trunc = Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Describtion));
+
+
+                }
+
+
+                @Truncate.TruncateString(trunc.ToString(), 150)
+
+            </td>
+            <td>
+                <a class="jq-btn" data-url="/services/Edit/@item.ProductId" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">اصلاح</a> |
+                <a class="jq-btn" data-url="/services/Details/@item.ProductId" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">جزئیات</a> |
+                <a class="jq-btn" data-url="/services/Delete/@item.ProductId" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">حذف</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br />
+صفحه @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) از @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+
 

@@ -21,9 +21,7 @@ namespace DomainClasses.Models
         [Required]
         [DisplayName("نام محصول")]
         public string Name { get; set; }
-        [Required]
-        [DisplayName("تصویر محصول")]
-        public string Imege { get; set; }
+        
         [DisplayName("توضیحات")]
         [Required(ErrorMessage = "متن مطلب وارد نشده است")]
         [AllowHtml]

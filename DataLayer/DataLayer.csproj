@@ -48,9 +48,9 @@
   <ItemGroup>
     <Compile Include="Context\IUnitOfWork.cs" />
     <Compile Include="Context\SaremChapContext.cs" />
-    <Compile Include="Migrations\201511231657527_mk.cs" />
-    <Compile Include="Migrations\201511231657527_mk.Designer.cs">
-      <DependentUpon>201511231657527_mk.cs</DependentUpon>
+    <Compile Include="Migrations\201512021738356_update product model.cs" />
+    <Compile Include="Migrations\201512021738356_update product model.Designer.cs">
+      <DependentUpon>201512021738356_update product model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,8 +66,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511231657527_mk.resx">
-      <DependentUpon>201511231657527_mk.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512021738356_update product model.resx">
+      <DependentUpon>201512021738356_update product model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
